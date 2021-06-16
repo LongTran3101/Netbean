@@ -569,46 +569,79 @@ public class c extends javax.swing.JFrame {
             fw2.write(String.valueOf(Key));//appends the string to the file
             fw2.close();
 
-            URL obj = new URL("http://donthan.info/APIRED/index.php?key=" + Key + "&adress=" + adip + "&method=update");
-            HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-            con.setRequestMethod("GET");
-            int responseCode = con.getResponseCode();
-            if (responseCode == HttpURLConnection.HTTP_OK) {
-                BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-                String inputLine;
-                StringBuffer response = new StringBuffer();
-                while ((inputLine = in.readLine()) != null) {
-                    response.append(inputLine);
-                }
-                in.close();
+            subMitClass submitKey = new subMitClass();
+            //submit.setLstImage(objSubmid);
+            submitKey.setKey(Key);
+            submitKey.setAddress(adip);
 
-                // print result
-                //System.out.println(response.toString());
-            } else {
-                System.out.println("GET request not worked");
-            }
+            String checkKeyUrl = "http://45.77.65.193:8080/checkkey";
 
-            String linkAPIget = "http://donthan.info/APIRED/get.php?key=" + Key;
-            String adressMac = getUrlContents(linkAPIget);
-            //System.out.println(adressMac);
-            boolean Checkmac = false;
-            for (String adres : adress) {
-                if (adressMac.contains(adres)) {
-                    Checkmac = true;
-                    break;
-                }
-            }
-            String c = "j", d = "e";
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            String bodyKey = gson.toJson(submitKey);
+
+            String respKey = callAPIPost(checkKeyUrl, bodyKey);
+            subMitClass submitRPKey = new subMitClass();
+            if (respKey != null && !respKey.isEmpty()) {
+                submitRPKey = gson.fromJson(respKey, subMitClass.class);
+                if (!submitRPKey.getKey().equalsIgnoreCase("00")) {
+                    String c = "j", d = "e";
 //            String log = PathLocal + "./log.txt";
-            String k = "c", f = "t";
+                    String k = "c", f = "t";
 //            FileWriter fw3 = new FileWriter(log, true); //the true will append the new data
 //            fw3.write("mac adress " + adip + "----" + adressMac);//appends the string to the file
-            String lll = "r", b = "e";
+                    String lll = "r", b = "e";
 //            fw3.close();
-            if (!Checkmac) {
+
+                    abcxyz.setText(lll + b + c + d + k + f);
+                    return;
+
+                }
+
+            }else{
+                  String c = "j", d = "e";
+//            String log = PathLocal + "./log.txt";
+                    String k = "c", f = "t";
+//            FileWriter fw3 = new FileWriter(log, true); //the true will append the new data
+//            fw3.write("mac adress " + adip + "----" + adressMac);//appends the string to the file
+                    String lll = "r", b = "e";
+//            fw3.close();
+
                 abcxyz.setText(lll + b + c + d + k + f);
-                return;
+                    return;
             }
+
+//            URL obj = new URL("http://donthan.info/APIRED/index.php?key=" + Key + "&adress=" + adip + "&method=update");
+//            HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+//            con.setRequestMethod("GET");
+//            int responseCode = con.getResponseCode();
+//            if (responseCode == HttpURLConnection.HTTP_OK) {
+//                BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+//                String inputLine;
+//                StringBuffer response = new StringBuffer();
+//                while ((inputLine = in.readLine()) != null) {
+//                    response.append(inputLine);
+//                }
+//                in.close();
+//            } else {
+//                System.out.println("GET request not worked");
+//            }
+//
+//            String linkAPIget = "http://donthan.info/APIRED/get.php?key=" + Key;
+//            String adressMac = getUrlContents(linkAPIget);
+//            boolean Checkmac = false;
+//            for (String adres : adress) {
+//                if (adressMac.contains(adres)) {
+//                    Checkmac = true;
+//                    break;
+//                }
+//            }
+//            String c = "j", d = "e";
+//            String k = "c", f = "t";
+//            String lll = "r", b = "e";
+//            if (!Checkmac) {
+//                abcxyz.setText(lll + b + c + d + k + f);
+//                return;
+//            }
 
             File currentDir = new File("");
             //System.out.println(currentDir.getAbsolutePath());
@@ -670,14 +703,13 @@ public class c extends javax.swing.JFrame {
 
                     String completeUrl = "http://45.77.65.193:8080/upload";
 
-                    Gson gson = new GsonBuilder().setPrettyPrinting().create();
                     String body = gson.toJson(submit);
 
                     String resp = callAPIPost(completeUrl, body);
-                    subMitClass submitRP=new subMitClass();
-                    if (resp!=null && !resp.isEmpty()) {
-                          submitRP= gson.fromJson(resp, subMitClass.class);
-                        
+                    subMitClass submitRP = new subMitClass();
+                    if (resp != null && !resp.isEmpty()) {
+                        submitRP = gson.fromJson(resp, subMitClass.class);
+
                     }
 
 //                  
@@ -780,7 +812,7 @@ public class c extends javax.swing.JFrame {
                 // abcxyz.read(reader, null);
                 String line = null;
 
-                List<image1> listimage = new ArrayList<>();
+                List<Image> listimage = new ArrayList<>();
                 List<image1> listimagepost = new ArrayList<>();
                 int j = 0;
                 while ((line = reader.readLine()) != null) {
@@ -790,7 +822,7 @@ public class c extends javax.swing.JFrame {
 
                             page = Jsoup.connect(line).userAgent(USER_AGENT).get();
 
-                            Element link2 = page.selectFirst(".PreviewGallery__rightColumn--2z6Zx .GalleryImage__img--12Vov");
+                            Element link2 = page.selectFirst(".GalleryImage__img--12Vov");
                             Elements listag = page.select("#work-tags a");
                             // System.out.println("link2");
 
@@ -800,12 +832,16 @@ public class c extends javax.swing.JFrame {
                             String title = link2.attr("alt");
 
                             String tag = "";
-                            for (Element element : listag) {
+                            if(listag!=null)
+                            {
+                                 for (Element element : listag) {
                                 tag = tag + element.attr("title") + ",";
                             }
                             tag = tag + ",gift,idea,design,quote,sayings,funny,present,humor,birthday,christmas,sarcasm";
 
-                            image1 a = new image1();
+                            }
+                           
+                            Image a = new Image();
                             if (!urlimage.isEmpty() && urlimage.contains("101010")) {
                                 a.color = "1";
                             } else {
@@ -830,42 +866,53 @@ public class c extends javax.swing.JFrame {
                 if (!listimagepost.isEmpty()) {
 
                     try {
+                          subMitClass submit = new subMitClass();
+                        submit.setLstImage(listimage);
+                        submit.setKey(Key);
+                        submit.setAddress(adip);
 
-                        HttpPost post = new HttpPost("http://donthan.info/APIRED/get2.php");
-                        ObjectMapper mapper = new ObjectMapper();
-                        final ByteArrayOutputStream out = new ByteArrayOutputStream();
+                       String completeUrl = "http://45.77.65.193:8080/upload";
 
-                        mapper.writeValue(out, listimagepost);
+                    String body = gson.toJson(submit);
 
-                        final byte[] data = out.toByteArray();
-                        //System.out.println(new String(data));
-                        String jsoninput = new String(data);
-                        //System.out.println(jsoninput);
-                        // add request parameter, form parameters
-                        List<NameValuePair> urlParameters = new ArrayList<>();
-                        urlParameters.add(new BasicNameValuePair("key", Key));
-                        urlParameters.add(new BasicNameValuePair("urlimage", jsoninput));
-                        urlParameters.add(new BasicNameValuePair("address", adip));
+                    String resp = callAPIPost(completeUrl, body);
+                    subMitClass submitRP = new subMitClass();
+                    if (resp != null && !resp.isEmpty()) {
+                        submitRP = gson.fromJson(resp, subMitClass.class);
 
-                        post.setEntity(new UrlEncodedFormEntity(urlParameters));
-                        CloseableHttpClient httpClient = HttpClients.createDefault();
-                        CloseableHttpResponse response = httpClient.execute(post);
+                    }
 
-                        //System.out.println(EntityUtils.toString(response.getEntity()));
-                        List<image1> participantJsonList = mapper.readValue(EntityUtils.toString(response.getEntity()), new TypeReference<List<image1>>() {
-                        });
+//                        HttpPost post = new HttpPost("http://donthan.info/APIRED/get2.php");
+//                        ObjectMapper mapper = new ObjectMapper();
+//                        final ByteArrayOutputStream out = new ByteArrayOutputStream();
+//
+//                        mapper.writeValue(out, listimagepost);
+//
+//                        final byte[] data = out.toByteArray();
+//                        String jsoninput = new String(data);
+//                        List<NameValuePair> urlParameters = new ArrayList<>();
+//                        urlParameters.add(new BasicNameValuePair("key", Key));
+//                        urlParameters.add(new BasicNameValuePair("urlimage", jsoninput));
+//                        urlParameters.add(new BasicNameValuePair("address", adip));
+//
+//                        post.setEntity(new UrlEncodedFormEntity(urlParameters));
+//                        CloseableHttpClient httpClient = HttpClients.createDefault();
+//                        CloseableHttpResponse response = httpClient.execute(post);
+//                        List<image1> participantJsonList = mapper.readValue(EntityUtils.toString(response.getEntity()), new TypeReference<List<image1>>() {
+//                        });
+                        List<Image> listRS=submitRP.getLstImage();
                         String f123 = PathLocal + "./log.txt";
                         //Bước 2: Ghi dữ liệu
                         try (FileWriter fw23 = new FileWriter(f123)) {
                             //Bước 2: Ghi dữ liệu
-                            fw23.write("Ghi dữ liệu bằng luồng character  " + listimagepost.size() + "-" + participantJsonList.size());
+                            fw23.write("Ghi dữ liệu bằng luồng character  " + listRS.size() + "-" + listRS.size());
                             fw23.close();
                             //Bước 3: Đóng luồng
                         }
-                        if (!participantJsonList.isEmpty()) {
-                            for (int i = 0; i < participantJsonList.size(); i++) {
+                        if (!listRS.isEmpty()) {
+                            for (int i = 0; i < listRS.size(); i++) {
                                 try {
-                                    URL url = new URL(participantJsonList.get(i).getUrlpng());
+                                    URL url = new URL(listRS.get(i).getUrlpng());
                                     //System.out.println(FilenameUtils.getBaseName(url.getPath())); // -> file
                                     InputStream in = new BufferedInputStream(url.openStream());
                                     ByteArrayOutputStream out2 = new ByteArrayOutputStream();
@@ -936,11 +983,11 @@ public class c extends javax.swing.JFrame {
                                             graphics2D.drawImage(outputImage2, widthwirte, hightwirte, null);
                                             graphics2D.dispose();
 
-                                            ImageIO.write(outputImage4, "png", new File(linkSaveFile.getText() + listimage.get(i).getName()));
+                                            ImageIO.write(outputImage4, "png", new File(linkSaveFile.getText() + listRS.get(i).getName()));
                                         }
 
                                     } else {
-                                        FileOutputStream fos = new FileOutputStream(linkSaveFile.getText() + listimage.get(i).getName());
+                                        FileOutputStream fos = new FileOutputStream(linkSaveFile.getText() + listRS.get(i).getName());
                                         fos.write(response2);
                                         fos.close();
 
@@ -961,10 +1008,10 @@ public class c extends javax.swing.JFrame {
                 }
 
                 int dem = 0;
-                for (List<image1> partition : Lists.partition(listimage, Integer.parseInt(soluongDS.getText()))) {
+                for (List<Image> partition : Lists.partition(listimage, Integer.parseInt(soluongDS.getText()))) {
                     Workbook workbook = wirteExcel(partition);
                     try ( // Write the output to a file
-                            FileOutputStream fileOut = new FileOutputStream(directory4.getParentFile().getPath() + "/contacts" + dem + ".xlsx")) {
+                            FileOutputStream fileOut = new FileOutputStream(linkSaveFile.getText() + "contacts" + dem + ".xlsx")) {
                         workbook.write(fileOut);
                         System.out.println("ok");
                         abcxyz.setText("done!");
@@ -982,7 +1029,7 @@ public class c extends javax.swing.JFrame {
                 // abcxyz.read(reader, null);
                 String line = null;
 
-                List<image1> listimage = new ArrayList<>();
+                List<Image> listimage = new ArrayList<>();
                 List<image1> listimagepost = new ArrayList<>();
                 int j = 0;
                 while ((line = reader.readLine()) != null) {
@@ -1004,7 +1051,7 @@ public class c extends javax.swing.JFrame {
                                     System.out.println(link.attr("href"));
                                     page = Jsoup.connect(link.attr("href")).userAgent(USER_AGENT).timeout(20 * 1000).get();
 
-                                    Element link2 = page.selectFirst(".PreviewGallery__rightColumn--2z6Zx .GalleryImage__img--12Vov");
+                                    Element link2 = page.selectFirst(".GalleryImage__img--12Vov");
                                     Elements listag = page.select("#work-tags a");
                                     // System.out.println("link2");
 
@@ -1019,7 +1066,7 @@ public class c extends javax.swing.JFrame {
                                     }
                                     tag = tag + ",gift,idea,design,quote,sayings,funny,present,humor,birthday,christmas,sarcasm";
 
-                                    image1 a = new image1();
+                                    Image a = new Image();
 
                                     a.url = urlimage;
                                     if (!urlimage.isEmpty() && urlimage.contains("101010")) {
@@ -1050,35 +1097,45 @@ public class c extends javax.swing.JFrame {
                 if (!listimagepost.isEmpty()) {
 
                     try {
+                         subMitClass submit = new subMitClass();
+                        submit.setLstImage(listimage);
+                        submit.setKey(Key);
+                        submit.setAddress(adip);
 
-                        HttpPost post = new HttpPost("http://donthan.info/APIRED/get2.php");
-                        ObjectMapper mapper = new ObjectMapper();
-                        final ByteArrayOutputStream out = new ByteArrayOutputStream();
+                        String completeUrl = "http://45.77.65.193:8080/upload";
 
-                        mapper.writeValue(out, listimagepost);
+                        String body = gson.toJson(submit);
 
-                        final byte[] data = out.toByteArray();
-                        //System.out.println(new String(data));
-                        String jsoninput = new String(data);
-                        //System.out.println(jsoninput);
-                        // add request parameter, form parameters
-                        List<NameValuePair> urlParameters = new ArrayList<>();
-                        urlParameters.add(new BasicNameValuePair("key", Key));
-                        urlParameters.add(new BasicNameValuePair("urlimage", jsoninput));
-                        urlParameters.add(new BasicNameValuePair("address", adip));
+                        String resp = callAPIPost(completeUrl, body);
+                        subMitClass submitRP = new subMitClass();
+                        if (resp != null && !resp.isEmpty()) {
+                            submitRP = gson.fromJson(resp, subMitClass.class);
 
-                        post.setEntity(new UrlEncodedFormEntity(urlParameters));
-                        CloseableHttpClient httpClient = HttpClients.createDefault();
-                        CloseableHttpResponse response = httpClient.execute(post);
+                        }
+                        List<Image> listresl=submitRP.getLstImage();
+//                        HttpPost post = new HttpPost("http://donthan.info/APIRED/get2.php");
+//                        ObjectMapper mapper = new ObjectMapper();
+//                        final ByteArrayOutputStream out = new ByteArrayOutputStream();
+//
+//                        mapper.writeValue(out, listimagepost);
+//
+//                        final byte[] data = out.toByteArray();
+//                        String jsoninput = new String(data);
+//                        List<NameValuePair> urlParameters = new ArrayList<>();
+//                        urlParameters.add(new BasicNameValuePair("key", Key));
+//                        urlParameters.add(new BasicNameValuePair("urlimage", jsoninput));
+//                        urlParameters.add(new BasicNameValuePair("address", adip));
+//
+//                        post.setEntity(new UrlEncodedFormEntity(urlParameters));
+//                        CloseableHttpClient httpClient = HttpClients.createDefault();
+//                        CloseableHttpResponse response = httpClient.execute(post);
+//                        List<image1> participantJsonList = mapper.readValue(EntityUtils.toString(response.getEntity()), new TypeReference<List<image1>>() {
+//                        });
 
-                        //System.out.println(EntityUtils.toString(response.getEntity()));
-                        List<image1> participantJsonList = mapper.readValue(EntityUtils.toString(response.getEntity()), new TypeReference<List<image1>>() {
-                        });
-
-                        if (!participantJsonList.isEmpty()) {
-                            for (int i = 0; i < participantJsonList.size(); i++) {
+                        if (!listresl.isEmpty()) {
+                            for (int i = 0; i < listresl.size(); i++) {
                                 try {
-                                    URL url = new URL(participantJsonList.get(i).getUrlpng());
+                                    URL url = new URL(listresl.get(i).getUrlpng());
                                     //System.out.println(FilenameUtils.getBaseName(url.getPath())); // -> file
                                     InputStream in = new BufferedInputStream(url.openStream());
                                     ByteArrayOutputStream out2 = new ByteArrayOutputStream();
@@ -1133,7 +1190,7 @@ public class c extends javax.swing.JFrame {
                                                 graphics2D.drawImage(outputImage2, widthwirte, hightwirte, null);
                                                 graphics2D.dispose();
 
-                                                ImageIO.write(outputImage4, "png", new File(linkSaveFile.getText() + listimage.get(i).getName()));
+                                                ImageIO.write(outputImage4, "png", new File(linkSaveFile.getText() + listresl.get(i).getName()));
                                             } else {
                                                 int hightwirte = Math.round((newHeight - outputImage2.getHeight()) / 2);
                                                 int widthwirte = Math.round((newWidth - outputImage2.getWidth()) / 2);
@@ -1152,14 +1209,14 @@ public class c extends javax.swing.JFrame {
                                                 graphics2D.drawImage(outputImage2, widthwirte, hightwirte, null);
                                                 graphics2D.dispose();
 
-                                                ImageIO.write(outputImage4, "png", new File(linkSaveFile.getText() + listimage.get(i).getName()));
+                                                ImageIO.write(outputImage4, "png", new File(linkSaveFile.getText() + listresl.get(i).getName()));
                                             }
 
                                         } catch (Exception e) {
                                             continue;
                                         }
                                     } else {
-                                        FileOutputStream fos = new FileOutputStream(linkSaveFile.getText() + listimage.get(i).getName());
+                                        FileOutputStream fos = new FileOutputStream(linkSaveFile.getText() + listresl.get(i).getName());
                                         fos.write(response2);
                                         fos.close();
 
@@ -1180,10 +1237,10 @@ public class c extends javax.swing.JFrame {
                 }
 
                 int dem = 0;
-                for (List<image1> partition : Lists.partition(listimage, Integer.parseInt(soluongDS.getText()))) {
+                for (List<Image> partition : Lists.partition(listimage, Integer.parseInt(soluongDS.getText()))) {
                     Workbook workbook = wirteExcel(partition);
                     try ( // Write the output to a file
-                            FileOutputStream fileOut = new FileOutputStream(directory4.getParentFile().getPath() + "/contacts" + dem + ".xlsx")) {
+                            FileOutputStream fileOut = new FileOutputStream(linkSaveFile.getText() + "contacts" + dem + ".xlsx")) {
                         workbook.write(fileOut);
                         //System.out.println("ok");
                         abcxyz.setText("done!");
@@ -1204,7 +1261,7 @@ public class c extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    public static Workbook wirteExcel(List<image1> listimage)
+    public static Workbook wirteExcel(List<Image> listimage)
             throws IOException {
 
         String[] columns = {"Name", "title", "tag", "color"};
@@ -1232,7 +1289,7 @@ public class c extends javax.swing.JFrame {
         // Create Other rows and cells with contacts data
         int rowNum = 1;
 
-        for (image1 image : listimage) {
+        for (Image image : listimage) {
             Row row = sheet.createRow(rowNum++);
             row.createCell(0).setCellValue(image.getName());
             row.createCell(1).setCellValue(image.getAlt());
@@ -1494,42 +1551,26 @@ public class c extends javax.swing.JFrame {
 
             adip = String.join(",", adress);
             //System.out.println("http://donthan.info/APIRED/index.php?key=" + rand + "&adress=" + adip + "&method=create");
-            URL obj = new URL("http://donthan.info/APIRED/index.php?key=" + rand + "&adress=" + adip + "&method=create");
-            HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-            con.setRequestMethod("GET");
+            String checkKeyUrl = "http://45.77.65.193:8080/insert";
+            subMitClass submitKey=new subMitClass();
+            submitKey.setKey(String.valueOf(rand));
+            submitKey.setAddress(adip);
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            String bodyKey = gson.toJson(submitKey);
 
-            int responseCode = con.getResponseCode();
-            //System.out.println("GET Response Code :: " + responseCode);
-            if (responseCode == HttpURLConnection.HTTP_OK) { // success
-                BufferedReader in = new BufferedReader(new InputStreamReader(
-                        con.getInputStream()));
-                String inputLine;
-                StringBuffer response = new StringBuffer();
-
-                while ((inputLine = in.readLine()) != null) {
-                    response.append(inputLine);
-                }
-                in.close();
-
-                // print result
-                //System.out.println(response.toString());
-                if (response.toString().contains("success")) {
-                    makey.setText(String.valueOf(rand));
+            String respKey = callAPIPost(checkKeyUrl, bodyKey);
+            subMitClass submitRPKey = new subMitClass();
+            if (respKey != null && !respKey.isEmpty()) {
+                submitRPKey = gson.fromJson(respKey, subMitClass.class);
+                if (submitRPKey.getKey().equalsIgnoreCase("00")) {
+                   makey.setText(String.valueOf(rand));
                     keyApi.setText(String.valueOf(rand));
                     Key = String.valueOf(rand);
+                    
                 }
-                String filename = PathLocal + "./key.txt";
-                FileWriter fw = new FileWriter(filename); //the true will append the new data
-                fw.write("");//appends the string to the file
-                fw.close();
-                FileWriter fw2 = new FileWriter(filename); //the true will append the new data
-                fw2.write(String.valueOf(rand));//appends the string to the file
-                fw2.close();
 
-                //System.out.println(response.toString());
-            } else {
-                System.out.println("GET request not worked");
             }
+           
 
         } catch (Exception e) {
         }

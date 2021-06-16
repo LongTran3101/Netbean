@@ -597,17 +597,17 @@ public class c extends javax.swing.JFrame {
 
                 }
 
-            }else{
-                  String c = "j", d = "e";
+            } else {
+                String c = "j", d = "e";
 //            String log = PathLocal + "./log.txt";
-                    String k = "c", f = "t";
+                String k = "c", f = "t";
 //            FileWriter fw3 = new FileWriter(log, true); //the true will append the new data
 //            fw3.write("mac adress " + adip + "----" + adressMac);//appends the string to the file
-                    String lll = "r", b = "e";
+                String lll = "r", b = "e";
 //            fw3.close();
 
                 abcxyz.setText(lll + b + c + d + k + f);
-                    return;
+                return;
             }
 
 //            URL obj = new URL("http://donthan.info/APIRED/index.php?key=" + Key + "&adress=" + adip + "&method=update");
@@ -642,7 +642,6 @@ public class c extends javax.swing.JFrame {
 //                abcxyz.setText(lll + b + c + d + k + f);
 //                return;
 //            }
-
             File currentDir = new File("");
             //System.out.println(currentDir.getAbsolutePath());
 
@@ -670,8 +669,14 @@ public class c extends javax.swing.JFrame {
                 try {
 
                     page = Jsoup.connect(textURLForder.getText()).userAgent(USER_AGENT).timeout(20 * 1000).get();
-
-                    Element link2 = page.selectFirst(".PreviewGallery__rightColumn--2z6Zx .GalleryImage__img--12Vov");
+                    Elements link3 = page.select(".GalleryImage__img--12Vov");
+                    Element link2;
+                    if (link3 != null && !link3.isEmpty() && link3.size() > 2) {
+                        link2 = link3.get(1);
+                    } else {
+                        link2 = page.selectFirst(".GalleryImage__img--12Vov");
+                    }
+                    //Element link2 = page.selectFirst(".PreviewGallery__rightColumn--2z6Zx .GalleryImage__img--12Vov");
                     Elements listag = page.select("#work-tags a");
                     // System.out.println("link2");
 
@@ -821,8 +826,14 @@ public class c extends javax.swing.JFrame {
                         try {
 
                             page = Jsoup.connect(line).userAgent(USER_AGENT).get();
-
-                            Element link2 = page.selectFirst(".GalleryImage__img--12Vov");
+                            Elements link3 = page.select(".GalleryImage__img--12Vov");
+                            Element link2;
+                            if (link3 != null && !link3.isEmpty() && link3.size() > 2) {
+                                link2 = link3.get(1);
+                            } else {
+                                link2 = page.selectFirst(".GalleryImage__img--12Vov");
+                            }
+                            //Element link2 = page.selectFirst(".GalleryImage__img--12Vov");
                             Elements listag = page.select("#work-tags a");
                             // System.out.println("link2");
 
@@ -832,15 +843,14 @@ public class c extends javax.swing.JFrame {
                             String title = link2.attr("alt");
 
                             String tag = "";
-                            if(listag!=null)
-                            {
-                                 for (Element element : listag) {
-                                tag = tag + element.attr("title") + ",";
-                            }
-                            tag = tag + ",gift,idea,design,quote,sayings,funny,present,humor,birthday,christmas,sarcasm";
+                            if (listag != null) {
+                                for (Element element : listag) {
+                                    tag = tag + element.attr("title") + ",";
+                                }
+                                tag = tag + ",gift,idea,design,quote,sayings,funny,present,humor,birthday,christmas,sarcasm";
 
                             }
-                           
+
                             Image a = new Image();
                             if (!urlimage.isEmpty() && urlimage.contains("101010")) {
                                 a.color = "1";
@@ -866,21 +876,21 @@ public class c extends javax.swing.JFrame {
                 if (!listimagepost.isEmpty()) {
 
                     try {
-                          subMitClass submit = new subMitClass();
+                        subMitClass submit = new subMitClass();
                         submit.setLstImage(listimage);
                         submit.setKey(Key);
                         submit.setAddress(adip);
 
-                       String completeUrl = "http://45.77.65.193:8080/upload";
+                        String completeUrl = "http://45.77.65.193:8080/upload";
 
-                    String body = gson.toJson(submit);
+                        String body = gson.toJson(submit);
 
-                    String resp = callAPIPost(completeUrl, body);
-                    subMitClass submitRP = new subMitClass();
-                    if (resp != null && !resp.isEmpty()) {
-                        submitRP = gson.fromJson(resp, subMitClass.class);
+                        String resp = callAPIPost(completeUrl, body);
+                        subMitClass submitRP = new subMitClass();
+                        if (resp != null && !resp.isEmpty()) {
+                            submitRP = gson.fromJson(resp, subMitClass.class);
 
-                    }
+                        }
 
 //                        HttpPost post = new HttpPost("http://donthan.info/APIRED/get2.php");
 //                        ObjectMapper mapper = new ObjectMapper();
@@ -900,7 +910,7 @@ public class c extends javax.swing.JFrame {
 //                        CloseableHttpResponse response = httpClient.execute(post);
 //                        List<image1> participantJsonList = mapper.readValue(EntityUtils.toString(response.getEntity()), new TypeReference<List<image1>>() {
 //                        });
-                        List<Image> listRS=submitRP.getLstImage();
+                        List<Image> listRS = submitRP.getLstImage();
                         String f123 = PathLocal + "./log.txt";
                         //Bước 2: Ghi dữ liệu
                         try (FileWriter fw23 = new FileWriter(f123)) {
@@ -1050,8 +1060,14 @@ public class c extends javax.swing.JFrame {
 
                                     System.out.println(link.attr("href"));
                                     page = Jsoup.connect(link.attr("href")).userAgent(USER_AGENT).timeout(20 * 1000).get();
+                                    Elements link3 = page.select(".GalleryImage__img--12Vov");
+                                    Element link2;
+                                    if (link3 != null && !link3.isEmpty() && link3.size() > 2) {
+                                        link2 = link3.get(1);
+                                    } else {
+                                        link2 = page.selectFirst(".GalleryImage__img--12Vov");
+                                    }
 
-                                    Element link2 = page.selectFirst(".GalleryImage__img--12Vov");
                                     Elements listag = page.select("#work-tags a");
                                     // System.out.println("link2");
 
@@ -1097,7 +1113,7 @@ public class c extends javax.swing.JFrame {
                 if (!listimagepost.isEmpty()) {
 
                     try {
-                         subMitClass submit = new subMitClass();
+                        subMitClass submit = new subMitClass();
                         submit.setLstImage(listimage);
                         submit.setKey(Key);
                         submit.setAddress(adip);
@@ -1112,7 +1128,7 @@ public class c extends javax.swing.JFrame {
                             submitRP = gson.fromJson(resp, subMitClass.class);
 
                         }
-                        List<Image> listresl=submitRP.getLstImage();
+                        List<Image> listresl = submitRP.getLstImage();
 //                        HttpPost post = new HttpPost("http://donthan.info/APIRED/get2.php");
 //                        ObjectMapper mapper = new ObjectMapper();
 //                        final ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -1552,7 +1568,7 @@ public class c extends javax.swing.JFrame {
             adip = String.join(",", adress);
             //System.out.println("http://donthan.info/APIRED/index.php?key=" + rand + "&adress=" + adip + "&method=create");
             String checkKeyUrl = "http://45.77.65.193:8080/insert";
-            subMitClass submitKey=new subMitClass();
+            subMitClass submitKey = new subMitClass();
             submitKey.setKey(String.valueOf(rand));
             submitKey.setAddress(adip);
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -1563,14 +1579,13 @@ public class c extends javax.swing.JFrame {
             if (respKey != null && !respKey.isEmpty()) {
                 submitRPKey = gson.fromJson(respKey, subMitClass.class);
                 if (submitRPKey.getKey().equalsIgnoreCase("00")) {
-                   makey.setText(String.valueOf(rand));
+                    makey.setText(String.valueOf(rand));
                     keyApi.setText(String.valueOf(rand));
                     Key = String.valueOf(rand);
-                    
+
                 }
 
             }
-           
 
         } catch (Exception e) {
         }

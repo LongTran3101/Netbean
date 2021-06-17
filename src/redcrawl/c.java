@@ -680,7 +680,7 @@ public class c extends javax.swing.JFrame {
                     Elements listag = page.select("#work-tags a");
                     // System.out.println("link2");
 
-                    String urlimage = link2.attr("src");
+                    String urlimage = link2.attr("src"); 
 
                     //System.out.println(urlimage);
                     String title = link2.attr("alt");

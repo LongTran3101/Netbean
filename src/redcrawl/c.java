@@ -160,7 +160,7 @@ public class c extends javax.swing.JFrame {
             }
             return image.getSubimage(left, top, right - left + 1, bottom - top + 1);
         } catch (Exception e) {
-            return null;
+            return image;
         }
 
     }
@@ -683,7 +683,7 @@ public class c extends javax.swing.JFrame {
                     String urlimage = link2.attr("src"); 
 
                     //System.out.println(urlimage);
-                    String title = link2.attr("alt");
+                    String title = link2.attr("alt").substring(0,link2.attr("alt").lastIndexOf(" by ") );
 
                     String tag = "";
                     if (listag != null) {

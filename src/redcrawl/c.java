@@ -840,7 +840,7 @@ public class c extends javax.swing.JFrame {
                             String urlimage = link2.attr("src");
 
                             // System.out.println(urlimage);
-                            String title = link2.attr("alt");
+                             String title = link2.attr("alt").substring(0,link2.attr("alt").lastIndexOf(" by ") );
 
                             String tag = "";
                             if (listag != null) {
@@ -1074,7 +1074,7 @@ public class c extends javax.swing.JFrame {
                                     String urlimage = link2.attr("src");
 
                                     //System.out.println(urlimage);
-                                    String title = link2.attr("alt");
+                                    String title = link2.attr("alt").substring(0,link2.attr("alt").lastIndexOf(" by ") );
 
                                     String tag = "";
                                     for (Element element : listag) {

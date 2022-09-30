@@ -385,7 +385,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="width">
       <Properties>
-        <Property name="text" type="java.lang.String" value="5000"/>
+        <Property name="text" type="java.lang.String" value="4500"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
@@ -395,7 +395,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="hight">
       <Properties>
-        <Property name="text" type="java.lang.String" value="5500"/>
+        <Property name="text" type="java.lang.String" value="5400"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JCheckBox" name="checkresize">
@@ -431,8 +431,11 @@
     </Component>
     <Component class="javax.swing.JTextField" name="soluongDS">
       <Properties>
-        <Property name="text" type="java.lang.String" value="20"/>
+        <Property name="text" type="java.lang.String" value="2000"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="soluongDSActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="cantren">
       <Properties>
@@ -451,7 +454,7 @@
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="buttonGroup2"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="c&#x103;ng gi&#x1eef;a"/>
+        <Property name="text" type="java.lang.String" value="c&#x103;n gi&#x1eef;a"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tileresize">

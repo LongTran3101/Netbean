@@ -89,7 +89,7 @@ import org.jsoup.select.Elements;
  *
  * @author me
  */
-public class c extends javax.swing.JFrame {
+public class ebay extends javax.swing.JFrame {
 
     public static String status = "";
     private final String USER_AGENT = "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Chrome/W.X.Y.Z Safari/537.36";
@@ -103,7 +103,7 @@ public class c extends javax.swing.JFrame {
     static String Key;
     private Document page;
 
-    public c() {
+    public ebay() {
 
         initComponents();
     }
@@ -271,6 +271,7 @@ public class c extends javax.swing.JFrame {
 
             buttonGroup1.add(theolink);
             theolink.setText("Theo Link");
+            theolink.setEnabled(false);
             theolink.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     theolinkActionPerformed(evt);
@@ -278,8 +279,8 @@ public class c extends javax.swing.JFrame {
             });
 
             buttonGroup1.add(theofile);
-            theofile.setSelected(true);
             theofile.setText("Nhiều link");
+            theofile.setEnabled(false);
 
             jButton2.setText("tạo key");
             jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -332,7 +333,13 @@ public class c extends javax.swing.JFrame {
             checkresize.setText("resize");
 
             buttonGroup1.add(theopage);
+            theopage.setSelected(true);
             theopage.setText("Theo page");
+            theopage.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    theopageActionPerformed(evt);
+                }
+            });
 
             jLabel6.setText("key word cần lọc");
 
@@ -561,7 +568,7 @@ public class c extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Nhập key");
                 return;
             }
-            ProtectionDomain pd = c.class.getProtectionDomain();
+            ProtectionDomain pd = ebay.class.getProtectionDomain();
             CodeSource cs = pd.getCodeSource();
             URL location = cs.getLocation();
 
@@ -1087,53 +1094,37 @@ public class c extends javax.swing.JFrame {
                     if (!(line.startsWith("*"))) {
 
                         try {
-
+                             status ="Lấy thông tin \n"+ line+"\n" +"link số: "+ (j+1);
+                                     setStatus();
                             page = Jsoup.connect(line).userAgent(USER_AGENT).timeout(20 * 1000).get();
 
-                            Elements links = page.select(".styles__link--3QJ5N");
-                            if (!links.isEmpty()) {
-                                links.remove(links.size() - 1);
-
-                            }
+                            Elements links = page.select(".mimg");
+//                            if (!links.isEmpty()) {
+//                                links.remove(links.size() - 1);
+//
+//                            }
 
                             for (Element link : links) {
                                 try {
-
-                                    System.out.println(link.attr("href"));
-                                    page = Jsoup.connect(link.attr("href")).userAgent(USER_AGENT).timeout(20 * 1000).get();
-                                    Elements link3 = page.select(".GalleryImage__img--2Epz2");
-                                    Element link2;
-                                    if (link3 != null && !link3.isEmpty() && link3.size() > 2) {
-                                        link2 = link3.get(1);
-                                    } else {
-                                        link2 = page.selectFirst(".GalleryImage__img--2Epz2");
-                                    }
-
-                                    Elements listag = page.select("#work-tags a");
-                                    // System.out.println("link2");
-
-                                    String urlimage = link2.attr("src");
+                                    
+                                    Element elmIma = link.getElementsByTag("img").first();
+                                    String src=elmIma.attr("src");
+                                   
+                                    String urlimage =src.replace("225", "1600");
 
                                     //System.out.println(urlimage);
-                                    String title = link2.attr("alt").substring(0, link2.attr("alt").lastIndexOf(" by "));
+                                      Element elmTtitle = link.getElementsByClass("gvtitle").first();
+                                     Element elmTtitleA=elmTtitle.getElementsByTag("a").first();
+                                    String title = elmTtitleA.attr("title");
 
-                                    String tag = "";
-                                    for (Element element : listag) {
-                                        tag = tag + element.attr("title") + ",";
-                                    }
-                                    tag = tag + ",gift,idea,design,quote,sayings,funny,present,humor,birthday,christmas,sarcasm";
+                                 
 
                                     Image a = new Image();
 
                                     a.url = urlimage;
-                                    if (!urlimage.isEmpty() && urlimage.contains("101010")) {
-                                        a.color = "1";
-                                    } else {
-                                        a.color = "2";
-                                    }
+                                  
                                     listimagepost.add(new image1(urlimage));
                                     a.alt = title;
-                                    a.tagchuan = tag;
                                     a.name = title.replaceAll("[^a-zA-Z0-9\\s+]", "") + j + ".png";
                                     listimage.add(a);
                                     j++;
@@ -1154,22 +1145,7 @@ public class c extends javax.swing.JFrame {
                 if (!listimagepost.isEmpty()) {
 
                     try {
-                        subMitClass submit = new subMitClass();
-                        submit.setLstImage(listimage);
-                        submit.setKey(Key);
-                        submit.setAddress(adip);
-
-                        String completeUrl = "http://45.77.65.193:8080/upload";
-
-                        String body = gson.toJson(submit);
-
-                        String resp = callAPIPost(completeUrl, body);
-                        subMitClass submitRP = new subMitClass();
-                        if (resp != null && !resp.isEmpty()) {
-                            submitRP = gson.fromJson(resp, subMitClass.class);
-
-                        }
-                        List<Image> listresl = submitRP.getLstImage();
+                       
 //                        HttpPost post = new HttpPost("http://donthan.info/APIRED/get2.php");
 //                        ObjectMapper mapper = new ObjectMapper();
 //                        final ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -1189,10 +1165,12 @@ public class c extends javax.swing.JFrame {
 //                        List<image1> participantJsonList = mapper.readValue(EntityUtils.toString(response.getEntity()), new TypeReference<List<image1>>() {
 //                        });
 
-                        if (!listresl.isEmpty()) {
-                            for (int i = 0; i < listresl.size(); i++) {
+                        if (!listimage.isEmpty()) {
+                            for (int i = 0; i < listimage.size(); i++) {
                                 try {
-                                    URL url = new URL(listresl.get(i).getUrlpng());
+                                     status ="Lấy file \n"+ listimage.get(i).getUrl()+"\n" +"link số: "+ (i+1);
+                                     setStatus();
+                                    URL url = new URL(listimage.get(i).getUrl());
                                     //System.out.println(FilenameUtils.getBaseName(url.getPath())); // -> file
                                     InputStream in = new BufferedInputStream(url.openStream());
                                     ByteArrayOutputStream out2 = new ByteArrayOutputStream();
@@ -1255,7 +1233,7 @@ public class c extends javax.swing.JFrame {
                                             graphics2D.drawImage(outputImage2, widthwirte, hightwirte, null);
                                             graphics2D.dispose();
 
-                                            ImageIO.write(outputImage4, "png", new File(linkSaveFile.getText() + listresl.get(i).getName().replaceAll("[^a-zA-Z0-9\\s+]", "") + ".png"));
+                                            ImageIO.write(outputImage4, "png", new File(linkSaveFile.getText() + listimage.get(i).getName().replaceAll("[^a-zA-Z0-9\\s+]", "") + ".png"));
                                         } else {
                                             int hightwirte = Math.round((newHeight - outputImage2.getHeight()) / 2);
                                             int widthwirte = Math.round((newWidth - outputImage2.getWidth()) / 2);
@@ -1274,12 +1252,12 @@ public class c extends javax.swing.JFrame {
                                             graphics2D.drawImage(outputImage2, widthwirte, hightwirte, null);
                                             graphics2D.dispose();
 
-                                            ImageIO.write(outputImage4, "png", new File(linkSaveFile.getText() + listresl.get(i).getName().replaceAll("[^a-zA-Z0-9\\s+]", "") + ".png"));
+                                            ImageIO.write(outputImage4, "png", new File(linkSaveFile.getText() + listimage.get(i).getName().replaceAll("[^a-zA-Z0-9\\s+]", "") + ".png"));
                                         }
 
                                     } else {
 
-                                        FileOutputStream fos = new FileOutputStream(linkSaveFile.getText() + listresl.get(i).getName().replaceAll("[^a-zA-Z0-9\\s+]", "") + i + ".png");
+                                        FileOutputStream fos = new FileOutputStream(linkSaveFile.getText() + listimage.get(i).getName().replaceAll("[^a-zA-Z0-9\\s+]", "") + i + ".png");
                                         fos.write(response2);
                                         fos.close();
 
@@ -1629,7 +1607,7 @@ public class c extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
-            ProtectionDomain pd = c.class.getProtectionDomain();
+            ProtectionDomain pd = ebay.class.getProtectionDomain();
             CodeSource cs = pd.getCodeSource();
             URL location = cs.getLocation();
 
@@ -1704,6 +1682,10 @@ public class c extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_soluongDSActionPerformed
 
+    private void theopageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_theopageActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_theopageActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1712,7 +1694,7 @@ public class c extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
 
-                c abc = new c();
+                ebay abc = new ebay();
                 abc.addWindowListener(new WindowAdapter() {
                     @Override
                     public void windowClosing(WindowEvent e) {
@@ -1724,7 +1706,7 @@ public class c extends javax.swing.JFrame {
                     public void windowOpened(WindowEvent e) {
 
                         try {
-                            ProtectionDomain pd = c.class.getProtectionDomain();
+                            ProtectionDomain pd = ebay.class.getProtectionDomain();
                             CodeSource cs = pd.getCodeSource();
                             URL location = cs.getLocation();
                             File directory4 = new File(location.getPath());
@@ -1760,7 +1742,7 @@ public class c extends javax.swing.JFrame {
                             abc.linkSaveFile.setText(conf.getUrlSave());
 
                         } catch (FileNotFoundException ex) {
-                            Logger.getLogger(c.class.getName()).log(Level.SEVERE, null, ex);
+                            Logger.getLogger(ebay.class.getName()).log(Level.SEVERE, null, ex);
                         }
 
                     }
@@ -1791,7 +1773,7 @@ public class c extends javax.swing.JFrame {
             }
 
         } catch (Exception ex) {
-            Logger.getLogger(c.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ebay.class.getName()).log(Level.SEVERE, null, ex);
         }
         return urlresturn;
     }

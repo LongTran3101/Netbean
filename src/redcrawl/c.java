@@ -1087,7 +1087,7 @@ public class c extends javax.swing.JFrame {
                                             graphics2D.drawImage(outputImage2, widthwirte, hightwirte, null);
                                             graphics2D.dispose();
 
-                                           boolean check= ImageIO.write(outputImage4, "png", new File(linkSaveFile.getText() + listRS.get(i).getName()));
+                                           boolean check= ImageIO.write(outputImage4, "png", new File(linkSaveFile.getText() + listRS.get(i).getAlt()));
                                            if(check);
                                         }
 
@@ -1343,7 +1343,7 @@ public class c extends javax.swing.JFrame {
                                             graphics2D.dispose();
 
                                           
-                                             boolean check=   ImageIO.write(outputImage4, "png", new File(linkSaveFile.getText() + listresl.get(i).getName()));
+                                             boolean check=   ImageIO.write(outputImage4, "png", new File(linkSaveFile.getText() + listresl.get(i).getAlt()));
                                            if(check);
                                         } else {
                                             int hightwirte = Math.round((newHeight - outputImage2.getHeight()) / 2);
@@ -1363,7 +1363,7 @@ public class c extends javax.swing.JFrame {
                                             graphics2D.drawImage(outputImage2, widthwirte, hightwirte, null);
                                             graphics2D.dispose();
 
-                                              boolean check=   ImageIO.write(outputImage4, "png", new File(linkSaveFile.getText() + listresl.get(i).getName()));
+                                              boolean check=   ImageIO.write(outputImage4, "png", new File(linkSaveFile.getText() + listresl.get(i).getAlt()));
                                            if(check);
                                         }
 

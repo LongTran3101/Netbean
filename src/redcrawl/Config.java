@@ -12,7 +12,16 @@ package redcrawl;
 public class Config {
     private String urlSave;
     private String percentResize;
+    private int isDownloadMockup;
     private String soluongds;
+
+    public int getIsDownloadMockup() {
+        return isDownloadMockup;
+    }
+
+    public void setIsDownloadMockup(int isDownloadMockup) {
+        this.isDownloadMockup = isDownloadMockup;
+    }
     private String rong,dai;
 
     public String getUrlSave() {

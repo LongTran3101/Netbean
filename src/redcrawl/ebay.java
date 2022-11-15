@@ -10,67 +10,61 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
-import java.io.FileNotFoundException;
-
-import java.io.FileWriter;
-
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-
-import java.net.NetworkInterface;
-
-import java.net.URLConnection;
-
-import java.util.Enumeration;
-
-import java.util.Scanner;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.concurrent.TimeUnit;
-
-import javax.swing.JOptionPane;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.util.EntityUtils;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
-
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+
+import java.net.NetworkInterface;
+
 import java.net.URL;
+import java.net.URLConnection;
 import java.security.CodeSource;
 import java.security.ProtectionDomain;
 import java.util.ArrayList;
+import java.util.Arrays;
+
+import java.util.Enumeration;
+
 import java.util.List;
+import java.util.Scanner;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
+
+import javax.swing.JOptionPane;
 import javax.swing.SwingWorker;
 import org.apache.http.HttpEntity;
+import org.apache.http.NameValuePair;
 import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Font;
@@ -84,6 +78,9 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import static redcrawl.c.Key;
 
 /**
  *
@@ -92,7 +89,7 @@ import org.jsoup.select.Elements;
 public class ebay extends javax.swing.JFrame {
 
     public static String status = "";
-    private final String USER_AGENT = "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Chrome/W.X.Y.Z Safari/537.36";
+    private final String USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36";
     /**
      *
      * Creates new form downloadanh
@@ -204,34 +201,12 @@ public class ebay extends javax.swing.JFrame {
         linkSaveFile = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         abcxyz = new javax.swing.JTextArea();
-        jLabel1 = new javax.swing.JLabel();
-        textURLForder = new javax.swing.JTextField();
-        theolink = new javax.swing.JRadioButton();
-        theofile = new javax.swing.JRadioButton();
-        jButton2 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        makey = new javax.swing.JTextArea();
-        jLabel3 = new javax.swing.JLabel();
-        keyApi = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        width = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        hight = new javax.swing.JTextField();
-        checkresize = new javax.swing.JCheckBox();
-        theopage = new javax.swing.JRadioButton();
-        jLabel6 = new javax.swing.JLabel();
-        tagex = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        soluongDS = new javax.swing.JTextField();
-        cantren = new javax.swing.JRadioButton();
-        cangiua = new javax.swing.JRadioButton();
-        tileresize = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("TOOL CRAWL RED");
@@ -261,40 +236,6 @@ public class ebay extends javax.swing.JFrame {
             abcxyz.setRows(5);
             jScrollPane1.setViewportView(abcxyz);
 
-            jLabel1.setText("Link áo");
-
-            textURLForder.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    textURLForderActionPerformed(evt);
-                }
-            });
-
-            buttonGroup1.add(theolink);
-            theolink.setText("Theo Link");
-            theolink.setEnabled(false);
-            theolink.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    theolinkActionPerformed(evt);
-                }
-            });
-
-            buttonGroup1.add(theofile);
-            theofile.setText("Nhiều link");
-            theofile.setEnabled(false);
-
-            jButton2.setText("tạo key");
-            jButton2.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    jButton2ActionPerformed(evt);
-                }
-            });
-
-            makey.setColumns(20);
-            makey.setRows(5);
-            jScrollPane2.setViewportView(makey);
-
-            jLabel3.setText("Key");
-
             jLabel2.setText("FB");
 
             jTextField1.setEditable(false);
@@ -310,144 +251,18 @@ public class ebay extends javax.swing.JFrame {
 
             jLabel4.setText("Phone");
 
-            jTextField3.setEditable(false);
-            jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-            jTextField3.setText("Mỗi ngày mỗi key chỉ sử dụng được trên một máy");
-            jTextField3.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    jTextField3ActionPerformed(evt);
-                }
-            });
-
-            jTextField4.setEditable(false);
-            jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-            jTextField4.setText("Liên hệ để kich hoạt key");
-
-            width.setText("4500");
-
-            jLabel5.setText("X");
-
-            hight.setText("5400");
-
-            checkresize.setSelected(true);
-            checkresize.setText("resize");
-
-            buttonGroup1.add(theopage);
-            theopage.setSelected(true);
-            theopage.setText("Theo page");
-            theopage.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    theopageActionPerformed(evt);
-                }
-            });
-
-            jLabel6.setText("key word cần lọc");
-
-            tagex.setText("to,or,the,and,is,in");
-            tagex.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    tagexActionPerformed(evt);
-                }
-            });
-
-            jLabel7.setText("Số lượng DS");
-
-            soluongDS.setText("2000");
-            soluongDS.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    soluongDSActionPerformed(evt);
-                }
-            });
-
-            buttonGroup2.add(cantren);
-            cantren.setSelected(true);
-            cantren.setText("căn trên");
-            cantren.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    cantrenActionPerformed(evt);
-                }
-            });
-
-            buttonGroup2.add(cangiua);
-            cangiua.setText("căn giữa");
-
-            tileresize.setText("80");
-
-            jLabel8.setText("tỉ lệ resize");
+            jTextArea1.setColumns(20);
+            jTextArea1.setRows(5);
+            jScrollPane2.setViewportView(jTextArea1);
 
             javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
             getContentPane().setLayout(layout);
             layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(checkresize)
-                                    .addGap(114, 114, 114)
-                                    .addComponent(result)
-                                    .addGap(128, 128, 128)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(hight, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(0, 213, Short.MAX_VALUE))
-                                .addComponent(jTextField4)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(176, 176, 176)
-                                    .addComponent(linkSaveFile)))
-                            .addGap(20, 20, 20))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 0, Short.MAX_VALUE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(tileresize))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(soluongDS))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(buttonChosefoder)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(theolink)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(theofile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(width)))
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(108, 108, 108)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(textURLForder, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
-                                        .addComponent(keyApi)))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(tagex)
-                                        .addComponent(jScrollPane1)))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(theopage))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(56, 56, 56)
-                                            .addComponent(cantren)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(cangiua)))
-                                    .addGap(0, 0, Short.MAX_VALUE)))
-                            .addContainerGap())
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGap(0, 0, Short.MAX_VALUE)
+                            .addGap(199, 199, 199)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -457,89 +272,57 @@ public class ebay extends javax.swing.JFrame {
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
                                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGap(27, 27, 27)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(28, 28, 28))))
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(122, 122, 122))
+                            .addGap(179, 179, 179))
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(167, 167, 167)
+                                    .addComponent(jScrollPane2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(result))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(buttonChosefoder, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jScrollPane1)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(linkSaveFile)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                    .addContainerGap())
             );
             layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(23, 23, 23)
+                    .addContainerGap(44, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(result)
+                            .addGap(119, 119, 119))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3)
-                        .addComponent(keyApi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(linkSaveFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buttonChosefoder, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(13, 13, 13))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(textURLForder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(18, 18, 18)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(buttonChosefoder, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(linkSaveFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(tileresize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8)))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(theolink)
-                        .addComponent(theofile)
-                        .addComponent(theopage))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel7)
-                                .addComponent(soluongDS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(width, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(hight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(checkresize)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(7, 7, 7)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(cantren)
-                                    .addComponent(cangiua))
-                                .addComponent(result))))
-                    .addGap(3, 3, 3)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel6)
-                        .addComponent(tagex, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 0, Short.MAX_VALUE))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jButton2)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap())
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel2)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel4))
-                            .addGap(71, 71, 71))))
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel4))
+                    .addGap(98, 98, 98))
             );
 
             pack();
@@ -560,736 +343,158 @@ public class ebay extends javax.swing.JFrame {
 
     public void download() {
         try {
-            int countDown = 1;
 
-            Key = keyApi.getText();
-
-            if (Key == null || Key.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Nhập key");
-                return;
-            }
-            ProtectionDomain pd = ebay.class.getProtectionDomain();
+            ProtectionDomain pd = c.class.getProtectionDomain();
             CodeSource cs = pd.getCodeSource();
             URL location = cs.getLocation();
 
             File directory4 = new File(location.getPath());
             String PathLocal = directory4.getParentFile().getPath().replace("%20", " ");
             System.out.println(PathLocal);
-            Enumeration<NetworkInterface> networkInterfaces = NetworkInterface.getNetworkInterfaces();
-            String adip = "";
-            List<String> adress = new ArrayList<>();
 
-            while (networkInterfaces.hasMoreElements()) {
-                NetworkInterface ni = networkInterfaces.nextElement();
-                byte[] hardwareAddress = ni.getHardwareAddress();
-                if (hardwareAddress != null) {
-                    String[] hexadecimalFormat = new String[hardwareAddress.length];
-                    for (int i = 0; i < hardwareAddress.length; i++) {
-                        hexadecimalFormat[i] = String.format("%02X", hardwareAddress[i]);
-                    }
-                    adress.add(String.join("-", hexadecimalFormat));
-                    //System.out.println(String.join("-", hexadecimalFormat));
-                }
-            }
-
-            adip = String.join(",", adress);
-            Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            String filename = PathLocal + "./key.txt";
-            FileWriter fw = new FileWriter(filename); //the true will append the new data
-            fw.write("");//appends the string to the file
-            fw.close();
-            FileWriter fw2 = new FileWriter(filename); //the true will append the new data
-            fw2.write(String.valueOf(Key));//appends the string to the file
-            fw2.close();
+            String s[] = jTextArea1.getText().split("\\r?\\n");
+            ArrayList<String> arrList = new ArrayList<>(Arrays.asList(s));
             Config conf = new Config();
-            conf.setDai(this.hight.getText());
-            conf.setPercentResize(this.tileresize.getText());
-            conf.setRong(this.width.getText());
-            conf.setSoluongds(this.soluongDS.getText());
             conf.setUrlSave(this.linkSaveFile.getText());
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
             String configInfo = gson.toJson(conf);
             String fileconfig = PathLocal + "./config.txt";
-            fw = new FileWriter(fileconfig); //the true will append the new data
+            FileWriter fw = new FileWriter(fileconfig); //the true will append the new data
             fw.write("");//appends the string to the file
             fw.close();
             fw = new FileWriter(fileconfig); //the true will append the new data
             fw.write(configInfo);//appends the string to the file
             fw.close();
-            subMitClass submitKey = new subMitClass();
-            //submit.setLstImage(objSubmid);
-            submitKey.setKey(Key);
-            submitKey.setAddress(adip);
 
-            String checkKeyUrl = "http://45.77.65.193:8080/checkkey";
+            // abcxyz.read(reader, null);
+            List<Image> listimage = new ArrayList<>();
+            List<Image> listimage123 = new ArrayList<>();
+            int j = 0;
+            for (String line : arrList) {
 
-            String bodyKey = gson.toJson(submitKey);
-
-            String respKey = callAPIPost(checkKeyUrl, bodyKey);
-            subMitClass submitRPKey = new subMitClass();
-            if (respKey != null && !respKey.isEmpty()) {
-                submitRPKey = gson.fromJson(respKey, subMitClass.class);
-                if (!submitRPKey.getKey().equalsIgnoreCase("00")) {
-                    String c = "j", d = "e";
-//            String log = PathLocal + "./log.txt";
-                    String k = "c", f = "t";
-//            FileWriter fw3 = new FileWriter(log, true); //the true will append the new data
-//            fw3.write("mac adress " + adip + "----" + adressMac);//appends the string to the file
-                    String lll = "r", b = "e";
-//            fw3.close();
-
-                    abcxyz.setText(lll + b + c + d + k + f);
-                    return;
-
-                }
-
-            } else {
-                String c = "j", d = "e";
-//            String log = PathLocal + "./log.txt";
-                String k = "c", f = "t";
-//            FileWriter fw3 = new FileWriter(log, true); //the true will append the new data
-//            fw3.write("mac adress " + adip + "----" + adressMac);//appends the string to the file
-                String lll = "r", b = "e";
-//            fw3.close();
-
-                abcxyz.setText(lll + b + c + d + k + f);
-                return;
-            }
-
-            if (theolink.isSelected()) {
-
-                try {
-                    status = textURLForder.getText();
-                    setStatus();
-                    page = Jsoup.connect(textURLForder.getText()).userAgent(USER_AGENT).timeout(20 * 1000).get();
-                    Elements link3 = page.select(".GalleryImage__img--2Epz2");
-                    Element link2;
-                    if (link3 != null && !link3.isEmpty() && link3.size() > 2) {
-                        link2 = link3.get(1);
-                    } else {
-                        link2 = page.selectFirst(".GalleryImage__img--2Epz2");
-                    }
-                    //Element link2 = page.selectFirst(".PreviewGallery__rightColumn--2z6Zx .GalleryImage__img--2Epz2");
-                    Elements listag = page.select("#work-tags a");
-                    // System.out.println("link2");
-
-                    String urlimage = link2.attr("src");
-
-                    //System.out.println(urlimage);
-                    String title = link2.attr("alt").substring(0, link2.attr("alt").lastIndexOf(" by "));
-
-                    String tag = "";
-                    if (listag != null) {
-                        for (Element element : listag) {
-                            tag = tag + element.attr("title") + ",";
-                        }
-                        tag = tag + ",gift,idea,design,quote,sayings,funny,present,humor,birthday,christmas,sarcasm";
-                    }
-
-                    List<Image> objSubmid = new ArrayList<Image>();
-                    Image a = new Image();
-
-                    a.url = urlimage;
-                    a.alt = title;
-                    a.tag = tag;
-                    objSubmid.add(a);
-
-                    subMitClass submit = new subMitClass();
-                    submit.setLstImage(objSubmid);
-                    submit.setKey(Key);
-                    submit.setAddress(adip);
-
-                    String completeUrl = "http://45.77.65.193:8080/upload";
-
-                    String body = gson.toJson(submit);
-
-                    String resp = callAPIPost(completeUrl, body);
-                    subMitClass submitRP = new subMitClass();
-                    if (resp != null && !resp.isEmpty()) {
-                        submitRP = gson.fromJson(resp, subMitClass.class);
-
-                    }
-
-//                  
-                    URL url = new URL(submitRP.getLstImage().get(0).getUrlpng());
-                    //System.out.println(FilenameUtils.getBaseName(url.getPath())); // -> file
-                    InputStream in = new BufferedInputStream(url.openStream());
-                    ByteArrayOutputStream out2 = new ByteArrayOutputStream();
-                    byte[] buf = new byte[2048];
-                    int n = 0;
-                    while (-1 != (n = in.read(buf))) {
-                        out2.write(buf, 0, n);
-                    }
-                    out2.close();
-                    in.close();
-                    byte[] response2 = out2.toByteArray();
-                    if (checkresize.isSelected()) {
-                        int newHeight = Integer.parseInt(hight.getText());
-                        int newWidth = Integer.parseInt(width.getText());
-                        int newHeightresize = Integer.parseInt(hight.getText()) * Integer.parseInt(tileresize.getText()) / 100;
-                        int newWidthresize = Integer.parseInt(width.getText()) * Integer.parseInt(tileresize.getText()) / 100;
-                        // PNG supports transparency
-                        // int type = config.formatName.equals("png")?BufferedImage.TYPE_INT_ARGB:BufferedImage.TYPE_INT_RGB;
-                        ByteArrayInputStream bais = new ByteArrayInputStream(response2);
-
-                        BufferedImage outputImage = null;
-
-                        BufferedImage inputimage = ImageIO.read(bais);
-                        outputImage = trimImage(inputimage);
-
-                        Scalr.Mode mode = Scalr.Mode.FIT_TO_HEIGHT;
-                        BufferedImage outputImage2 = Scalr.resize(outputImage, Scalr.Method.ULTRA_QUALITY, mode, newWidthresize - 10, newHeightresize - 10, Scalr.OP_ANTIALIAS);
-                        //System.out.println(outputImage2.getHeight());
-                        if (outputImage2.getWidth() > newWidth) {
-                            Scalr.Mode mode2 = Scalr.Mode.FIT_TO_WIDTH;
-                            outputImage2 = Scalr.resize(outputImage, Scalr.Method.ULTRA_QUALITY, mode2, newWidthresize - 10, newHeightresize - 10, Scalr.OP_ANTIALIAS);
-//                                            int hightwirte = Math.round(newHeight - outputImage2.getHeight());
-//                                            if((newHeight - outputImage2.getHeight())>35)
-//                                                 {
-//                                                        hightwirte = Math.round(newHeight - outputImage2.getHeight()+20);
-//                                                 }
-                            int hightwirte = Math.round((newHeight - outputImage2.getHeight()) / 2);
-
-                            if ((newHeight - outputImage2.getHeight()) > 400) {
-                                hightwirte = 400;
-                            }
-                            if ((newHeight - outputImage2.getHeight()) > 600) {
-                                hightwirte = 500;
-                            }
-                            if ((newHeight - outputImage2.getHeight()) > 500) {
-                                hightwirte = 450;
-                            }
-                            int widthwirte = Math.round((newWidth - outputImage2.getWidth()) / 2);
-                            int type = BufferedImage.TYPE_INT_ARGB;
-
-                            BufferedImage outputImage4 = new BufferedImage(newWidth, newHeight, type);
-                            Graphics2D graphics2D = outputImage4.createGraphics();
-                            RenderingHints hints = new RenderingHints(RenderingHints.KEY_INTERPOLATION,
-                                    RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-                            hints.put(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-                            hints.put(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
-                            graphics2D.setRenderingHints(hints);
-
-                            graphics2D.drawImage(outputImage2, widthwirte, hightwirte, null);
-                            graphics2D.dispose();
-
-                            ImageIO.write(outputImage4, "png", new File(linkSaveFile.getText() + title.replaceAll("[^a-zA-Z0-9\\s+]", "") + ".png"));
-                        } else {
-                            int hightwirte = Math.round((newHeight - outputImage2.getHeight()) / 2);
-                            int widthwirte = Math.round((newWidth - outputImage2.getWidth()) / 2);
-                            if ((newHeight - outputImage2.getHeight()) > 100) {
-                                hightwirte = 100;
-                            }
-                            if ((newHeight - outputImage2.getHeight()) > 200) {
-                                hightwirte = 200;
-                            }
-                            if ((newHeight - outputImage2.getHeight()) > 400) {
-                                hightwirte = 400;
-
-                            }
-                            if ((newHeight - outputImage2.getHeight()) > 500) {
-                                hightwirte = 450;
-                            }
-                            if ((newHeight - outputImage2.getHeight()) > 600) {
-                                hightwirte = 500;
-                            }
-                            if ((newHeight - outputImage2.getHeight()) > 700) {
-                                hightwirte = 700;
-                            }
-                            if ((newHeight - outputImage2.getHeight()) > 800) {
-                                hightwirte = 800;
-                            }
-                            if ((newHeight - outputImage2.getHeight()) > 800) {
-                                hightwirte = 900;
-                            }
-                            if ((newHeight - outputImage2.getHeight()) > 800) {
-                                hightwirte = 1000;
-                            }
-
-                            int type = BufferedImage.TYPE_INT_ARGB;
-
-                            BufferedImage outputImage4 = new BufferedImage(newWidth, newHeight, type);
-                            Graphics2D graphics2D = outputImage4.createGraphics();
-                            RenderingHints hints = new RenderingHints(RenderingHints.KEY_INTERPOLATION,
-                                    RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-                            hints.put(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-                            hints.put(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
-                            graphics2D.setRenderingHints(hints);
-
-                            graphics2D.drawImage(outputImage2, widthwirte, hightwirte, null);
-                            graphics2D.dispose();
-
-                            ImageIO.write(outputImage4, "png", new File(linkSaveFile.getText() + title.replaceAll("[^a-zA-Z0-9\\s+]", "") + ".png"));
-                        }
-
-                    } else {
-
-                        FileOutputStream fos = new FileOutputStream(linkSaveFile.getText() + title.replaceAll("[^a-zA-Z0-9\\s+]", "") + ".png");
-                        fos.write(response2);
-                        fos.close();
-
-                    }
-
-                    abcxyz.setText("dowload thành công");
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-
-                }
-
-            }
-
-            if (theofile.isSelected()) {
-                List<String> listurl = new ArrayList<>();
-
-                File directory = new File(PathLocal + "./abc.txt");
-                BufferedReader reader = new BufferedReader(new FileReader(directory));
-                // abcxyz.read(reader, null);
-                String line = null;
-
-                List<Image> listimage = new ArrayList<>();
-                List<image1> listimagepost = new ArrayList<>();
-                int j = 0;
-                while ((line = reader.readLine()) != null) {
-                    if (!(line.startsWith("*"))) {
-                        
-                        try {
-                            status ="Lấy thông tin \n"+ line+"\n" +"link số: "+ (j+1);
-                                     setStatus();
-                            page = Jsoup.connect(line).userAgent(USER_AGENT).get();
-                            Elements link3 = page.select(".GalleryImage__img--2Epz2");
-                            Element link2;
-                            if (link3 != null && !link3.isEmpty() && link3.size() > 2) {
-                                link2 = link3.get(1);
-                            } else {
-                                link2 = page.selectFirst(".GalleryImage__img--2Epz2");
-                            }
-                            //Element link2 = page.selectFirst(".GalleryImage__img--2Epz2");
-                            Elements listag = page.select("#work-tags a");
-                            // System.out.println("link2");
-
-                            String urlimage = link2.attr("src");
-
-                            // System.out.println(urlimage);
-                            String title = link2.attr("alt").substring(0, link2.attr("alt").lastIndexOf(" by "));
-
-                            String tag = "";
-                            if (listag != null) {
-                                for (Element element : listag) {
-                                    tag = tag + element.attr("title") + ",";
-                                }
-                                tag = tag + ",gift,idea,design,quote,sayings,funny,present,humor,birthday,christmas,sarcasm";
-
-                            }
-
-                            Image a = new Image();
-                            if (!urlimage.isEmpty() && urlimage.contains("101010")) {
-                                a.color = "1";
-                            } else {
-                                a.color = "2";
-                            }
-                            a.url = urlimage;
-
-                            listimagepost.add(new image1(urlimage));
-                            a.alt = title;
-                            a.tagchuan = tag;
-                            a.name = title.replaceAll("[^a-zA-Z0-9\\s+]", "") + j + ".png";
-                            listimage.add(a);
-                            j++;
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                            continue;
-                        }
-
-                    }
-                }
-
-                if (!listimagepost.isEmpty()) {
+                if (!line.isEmpty()) {
 
                     try {
-                        subMitClass submit = new subMitClass();
-                        submit.setLstImage(listimage);
-                        submit.setKey(Key);
-                        submit.setAddress(adip);
+                        status = "Lấy thông tin \n" + line + "\n" + "link số: " + (j + 1);
+                        setStatus();
+                        page = Jsoup.connect(line).userAgent(USER_AGENT).timeout(20 * 1000).get();
 
-                        String completeUrl = "http://45.77.65.193:8080/upload";
-
-                        String body = gson.toJson(submit);
-
-                        String resp = callAPIPost(completeUrl, body);
-                        subMitClass submitRP = new subMitClass();
-                        if (resp != null && !resp.isEmpty()) {
-                            submitRP = gson.fromJson(resp, subMitClass.class);
-
-                        }
-
-//                        HttpPost post = new HttpPost("http://donthan.info/APIRED/get2.php");
-//                        ObjectMapper mapper = new ObjectMapper();
-//                        final ByteArrayOutputStream out = new ByteArrayOutputStream();
-//
-//                        mapper.writeValue(out, listimagepost);
-//
-//                        final byte[] data = out.toByteArray();
-//                        String jsoninput = new String(data);
-//                        List<NameValuePair> urlParameters = new ArrayList<>();
-//                        urlParameters.add(new BasicNameValuePair("key", Key));
-//                        urlParameters.add(new BasicNameValuePair("urlimage", jsoninput));
-//                        urlParameters.add(new BasicNameValuePair("address", adip));
-//
-//                        post.setEntity(new UrlEncodedFormEntity(urlParameters));
-//                        CloseableHttpClient httpClient = HttpClients.createDefault();
-//                        CloseableHttpResponse response = httpClient.execute(post);
-//                        List<image1> participantJsonList = mapper.readValue(EntityUtils.toString(response.getEntity()), new TypeReference<List<image1>>() {
-//                        });
-                        List<Image> listRS = submitRP.getLstImage();
-                        String f123 = PathLocal + "./log.txt";
-                        //Bước 2: Ghi dữ liệu
-                        try (FileWriter fw23 = new FileWriter(f123)) {
-                            //Bước 2: Ghi dữ liệu
-                            fw23.write("Ghi dữ liệu bằng luồng character  " + listRS.size() + "-" + listRS.size());
-                            fw23.close();
-                            //Bước 3: Đóng luồng
-                        }
-                        if (!listRS.isEmpty()) {
-                            for (int i = 0; i < listRS.size(); i++) {
-                                try {
-                                     status ="Tải file \n"+ listRS.get(i).url+"\n" + (i+1) +"/"+(listRS.size() );
-                                     setStatus();
-                                    URL url = new URL(listRS.get(i).getUrlpng());
-                                    //System.out.println(FilenameUtils.getBaseName(url.getPath())); // -> file
-                                    InputStream in = new BufferedInputStream(url.openStream());
-                                    ByteArrayOutputStream out2 = new ByteArrayOutputStream();
-                                    byte[] buf = new byte[2048];
-                                    int n = 0;
-                                    while (-1 != (n = in.read(buf))) {
-                                        out2.write(buf, 0, n);
-                                    }
-                                    out2.close();
-                                    in.close();
-                                    byte[] response2 = out2.toByteArray();
-
-                                    if (checkresize.isSelected()) {
-                                        int newHeight = Integer.parseInt(hight.getText());
-                                        int newWidth = Integer.parseInt(width.getText());
-                                        int newHeightresize = Integer.parseInt(hight.getText()) * Integer.parseInt(tileresize.getText()) / 100;
-                                        int newWidthresize = Integer.parseInt(width.getText()) * Integer.parseInt(tileresize.getText()) / 100;
-                                        // PNG supports transparency
-                                        // int type = config.formatName.equals("png")?BufferedImage.TYPE_INT_ARGB:BufferedImage.TYPE_INT_RGB;
-                                        ByteArrayInputStream bais = new ByteArrayInputStream(response2);
-
-                                        BufferedImage outputImage = null;
-
-                                        BufferedImage inputimage = ImageIO.read(bais);
-                                        outputImage = trimImage(inputimage);
-
-                                        Scalr.Mode mode = Scalr.Mode.FIT_TO_HEIGHT;
-                                        BufferedImage outputImage2 = Scalr.resize(outputImage, Scalr.Method.ULTRA_QUALITY, mode, newWidthresize - 10, newHeightresize - 10, Scalr.OP_ANTIALIAS);
-                                        //System.out.println(outputImage2.getHeight());
-                                        if (outputImage2.getWidth() > newWidth) {
-                                            Scalr.Mode mode2 = Scalr.Mode.FIT_TO_WIDTH;
-                                            outputImage2 = Scalr.resize(outputImage, Scalr.Method.ULTRA_QUALITY, mode2, newWidthresize - 10, newHeightresize - 10, Scalr.OP_ANTIALIAS);
-//                                            int hightwirte = Math.round(newHeight - outputImage2.getHeight());
-//                                            if((newHeight - outputImage2.getHeight())>35)
-//                                                 {
-//                                                        hightwirte = Math.round(newHeight - outputImage2.getHeight()+20);
-//                                                 }
-                                            int hightwirte = Math.round((newHeight - outputImage2.getHeight()) / 2);
-
-                                            if ((newHeight - outputImage2.getHeight()) > 400) {
-                                                hightwirte = 400;
-                                            }
-                                            if ((newHeight - outputImage2.getHeight()) > 600) {
-                                                hightwirte = 500;
-                                            }
-                                            if ((newHeight - outputImage2.getHeight()) > 500) {
-                                                hightwirte = 450;
-                                            }
-                                            int widthwirte = Math.round((newWidth - outputImage2.getWidth()) / 2);
-                                            int type = BufferedImage.TYPE_INT_ARGB;
-
-                                            BufferedImage outputImage4 = new BufferedImage(newWidth, newHeight, type);
-                                            Graphics2D graphics2D = outputImage4.createGraphics();
-                                            RenderingHints hints = new RenderingHints(RenderingHints.KEY_INTERPOLATION,
-                                                    RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-                                            hints.put(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-                                            hints.put(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
-                                            graphics2D.setRenderingHints(hints);
-
-                                            graphics2D.drawImage(outputImage2, widthwirte, hightwirte, null);
-                                            graphics2D.dispose();
-
-                                            ImageIO.write(outputImage4, "png", new File(linkSaveFile.getText() + listRS.get(i).getName().replaceAll("[^a-zA-Z0-9\\s+]", "") + ".png"));
-                                        } else {
-                                            int hightwirte = Math.round((newHeight - outputImage2.getHeight()) / 2);
-                                            int widthwirte = Math.round((newWidth - outputImage2.getWidth()) / 2);
-
-                                            int type = BufferedImage.TYPE_INT_ARGB;
-
-                                            BufferedImage outputImage4 = new BufferedImage(newWidth, newHeight, type);
-                                            Graphics2D graphics2D = outputImage4.createGraphics();
-                                            RenderingHints hints = new RenderingHints(RenderingHints.KEY_INTERPOLATION,
-                                                    RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-                                            hints.put(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-                                            hints.put(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
-                                            graphics2D.setRenderingHints(hints);
-
-                                            graphics2D.drawImage(outputImage2, widthwirte, hightwirte, null);
-                                            graphics2D.dispose();
-
-                                            ImageIO.write(outputImage4, "png", new File(linkSaveFile.getText() + listRS.get(i).getName().replaceAll("[^a-zA-Z0-9\\s+]", "") + ".png"));
-                                        }
-
-                                    } else {
-
-                                        FileOutputStream fos = new FileOutputStream(linkSaveFile.getText() + listRS.get(i).getName().replaceAll("[^a-zA-Z0-9\\s+]", "") + i + ".png");
-                                        fos.write(response2);
-                                        fos.close();
-
-                                    }
-
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                    continue;
-                                }
-                            }
-                        }
-
-                    } catch (Exception e) {
-                        abcxyz.setText("có lỗi xảy ra xin thử lại");
-
-                        return;
-                    }
-
-                }
-
-                int dem = 0;
-                for (List<Image> partition : Lists.partition(listimage, Integer.parseInt(soluongDS.getText()))) {
-                    Workbook workbook = wirteExcel(partition);
-                    try ( // Write the output to a file
-                            FileOutputStream fileOut = new FileOutputStream(linkSaveFile.getText() + "contacts" + dem + ".xlsx")) {
-                        workbook.write(fileOut);
-                        System.out.println("ok");
-                        abcxyz.setText("done!");
-                    }
-                    dem++;
-                }
-
-            }
-
-            if (theopage.isSelected()) {
-                List<String> listurl = new ArrayList<>();
-
-                File directory = new File(PathLocal + "./abc.txt");
-                BufferedReader reader = new BufferedReader(new FileReader(directory));
-                // abcxyz.read(reader, null);
-                String line = null;
-
-                List<Image> listimage = new ArrayList<>();
-                List<image1> listimagepost = new ArrayList<>();
-                int j = 0;
-                while ((line = reader.readLine()) != null) {
-                    if (!(line.startsWith("*"))) {
-
-                        try {
-                             status ="Lấy thông tin \n"+ line+"\n" +"link số: "+ (j+1);
-                                     setStatus();
-                            page = Jsoup.connect(line).userAgent(USER_AGENT).timeout(20 * 1000).get();
-
-                            Elements links = page.select(".mimg");
+                        Elements links = page.select(".mimg");
 //                            if (!links.isEmpty()) {
 //                                links.remove(links.size() - 1);
 //
 //                            }
 
-                            for (Element link : links) {
-                                try {
-                                    
-                                    Element elmIma = link.getElementsByTag("img").first();
-                                    String src=elmIma.attr("src");
-                                   
-                                    String urlimage =src.replace("225", "1600");
+                        for (Element link : links) {
+                            try {
 
-                                    //System.out.println(urlimage);
-                                      Element elmTtitle = link.getElementsByClass("gvtitle").first();
-                                     Element elmTtitleA=elmTtitle.getElementsByTag("a").first();
-                                    String title = elmTtitleA.attr("title");
+                                Element elmIma = link.getElementsByTag("img").first();
+                                String src = elmIma.attr("src");
 
-                                 
+                                String urlimage = src.replace("225", "1600");
 
-                                    Image a = new Image();
+                                //System.out.println(urlimage);
+                                Element elmTtitle = link.getElementsByClass("gvtitle").first();
+                                Element elmTtitleA = elmTtitle.getElementsByTag("a").first();
+                                String title = elmTtitleA.attr("title");
 
-                                    a.url = urlimage;
-                                  
-                                    listimagepost.add(new image1(urlimage));
-                                    a.alt = title;
-                                    a.name = title.replaceAll("[^a-zA-Z0-9\\s+]", "") + j + ".png";
-                                    listimage.add(a);
-                                    j++;
-                                } catch (Exception e) {
-                                    continue;
-                                }
+                                Image a = new Image();
 
+                                a.url = urlimage;
+
+                                a.alt = title.replaceAll("[^a-zA-Z0-9-,\\s+]", "");
+                                a.name = title.replaceAll("[^a-zA-Z0-9\\s+]", "") + j + ".png";
+                                listimage123.add(a);
+                                j++;
+
+                              
+
+                            } catch (Exception e) {
+                                continue;
                             }
 
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                            continue;
                         }
-
-                    }
-                }
-
-                if (!listimagepost.isEmpty()) {
-
-                    try {
                        
-//                        HttpPost post = new HttpPost("http://donthan.info/APIRED/get2.php");
-//                        ObjectMapper mapper = new ObjectMapper();
-//                        final ByteArrayOutputStream out = new ByteArrayOutputStream();
-//
-//                        mapper.writeValue(out, listimagepost);
-//
-//                        final byte[] data = out.toByteArray();
-//                        String jsoninput = new String(data);
-//                        List<NameValuePair> urlParameters = new ArrayList<>();
-//                        urlParameters.add(new BasicNameValuePair("key", Key));
-//                        urlParameters.add(new BasicNameValuePair("urlimage", jsoninput));
-//                        urlParameters.add(new BasicNameValuePair("address", adip));
-//
-//                        post.setEntity(new UrlEncodedFormEntity(urlParameters));
-//                        CloseableHttpClient httpClient = HttpClients.createDefault();
-//                        CloseableHttpResponse response = httpClient.execute(post);
-//                        List<image1> participantJsonList = mapper.readValue(EntityUtils.toString(response.getEntity()), new TypeReference<List<image1>>() {
-//                        });
-
-                        if (!listimage.isEmpty()) {
-                            for (int i = 0; i < listimage.size(); i++) {
-                                try {
-                                     status ="Lấy file \n"+ listimage.get(i).getUrl()+"\n" +"link số: "+ (i+1);
-                                     setStatus();
-                                    URL url = new URL(listimage.get(i).getUrl());
-                                    //System.out.println(FilenameUtils.getBaseName(url.getPath())); // -> file
-                                    InputStream in = new BufferedInputStream(url.openStream());
-                                    ByteArrayOutputStream out2 = new ByteArrayOutputStream();
-                                    byte[] buf = new byte[2048];
-                                    int n = 0;
-                                    while (-1 != (n = in.read(buf))) {
-                                        out2.write(buf, 0, n);
-                                    }
-                                    out2.close();
-                                    in.close();
-                                    byte[] response2 = out2.toByteArray();
-                                    if (checkresize.isSelected()) {
-                                        int newHeight = Integer.parseInt(hight.getText());
-                                        int newWidth = Integer.parseInt(width.getText());
-                                        int newHeightresize = Integer.parseInt(hight.getText()) * Integer.parseInt(tileresize.getText()) / 100;
-                                        int newWidthresize = Integer.parseInt(width.getText()) * Integer.parseInt(tileresize.getText()) / 100;
-                                        // PNG supports transparency
-                                        // int type = config.formatName.equals("png")?BufferedImage.TYPE_INT_ARGB:BufferedImage.TYPE_INT_RGB;
-                                        ByteArrayInputStream bais = new ByteArrayInputStream(response2);
-
-                                        BufferedImage outputImage = null;
-
-                                        BufferedImage inputimage = ImageIO.read(bais);
-                                        outputImage = trimImage(inputimage);
-
-                                        Scalr.Mode mode = Scalr.Mode.FIT_TO_HEIGHT;
-                                        BufferedImage outputImage2 = Scalr.resize(outputImage, Scalr.Method.ULTRA_QUALITY, mode, newWidthresize - 10, newHeightresize - 10, Scalr.OP_ANTIALIAS);
-                                        //System.out.println(outputImage2.getHeight());
-                                        if (outputImage2.getWidth() > newWidth) {
-                                            Scalr.Mode mode2 = Scalr.Mode.FIT_TO_WIDTH;
-                                            outputImage2 = Scalr.resize(outputImage, Scalr.Method.ULTRA_QUALITY, mode2, newWidthresize - 10, newHeightresize - 10, Scalr.OP_ANTIALIAS);
-//                                            int hightwirte = Math.round(newHeight - outputImage2.getHeight());
-//                                            if((newHeight - outputImage2.getHeight())>35)
-//                                                 {
-//                                                        hightwirte = Math.round(newHeight - outputImage2.getHeight()+20);
-//                                                 }
-                                            int hightwirte = Math.round((newHeight - outputImage2.getHeight()) / 2);
-
-                                            if ((newHeight - outputImage2.getHeight()) > 400) {
-                                                hightwirte = 400;
-                                            }
-                                            if ((newHeight - outputImage2.getHeight()) > 600) {
-                                                hightwirte = 500;
-                                            }
-                                            if ((newHeight - outputImage2.getHeight()) > 500) {
-                                                hightwirte = 450;
-                                            }
-                                            int widthwirte = Math.round((newWidth - outputImage2.getWidth()) / 2);
-                                            int type = BufferedImage.TYPE_INT_ARGB;
-
-                                            BufferedImage outputImage4 = new BufferedImage(newWidth, newHeight, type);
-                                            Graphics2D graphics2D = outputImage4.createGraphics();
-                                            RenderingHints hints = new RenderingHints(RenderingHints.KEY_INTERPOLATION,
-                                                    RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-                                            hints.put(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-                                            hints.put(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
-                                            graphics2D.setRenderingHints(hints);
-
-                                            graphics2D.drawImage(outputImage2, widthwirte, hightwirte, null);
-                                            graphics2D.dispose();
-
-                                            ImageIO.write(outputImage4, "png", new File(linkSaveFile.getText() + listimage.get(i).getName().replaceAll("[^a-zA-Z0-9\\s+]", "") + ".png"));
-                                        } else {
-                                            int hightwirte = Math.round((newHeight - outputImage2.getHeight()) / 2);
-                                            int widthwirte = Math.round((newWidth - outputImage2.getWidth()) / 2);
-
-                                            int type = BufferedImage.TYPE_INT_ARGB;
-
-                                            BufferedImage outputImage4 = new BufferedImage(newWidth, newHeight, type);
-                                            Graphics2D graphics2D = outputImage4.createGraphics();
-                                            RenderingHints hints = new RenderingHints(RenderingHints.KEY_INTERPOLATION,
-                                                    RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-                                            hints.put(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-                                            hints.put(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
-                                            graphics2D.setRenderingHints(hints);
-
-                                            graphics2D.drawImage(outputImage2, widthwirte, hightwirte, null);
-                                            graphics2D.dispose();
-
-                                            ImageIO.write(outputImage4, "png", new File(linkSaveFile.getText() + listimage.get(i).getName().replaceAll("[^a-zA-Z0-9\\s+]", "") + ".png"));
-                                        }
-
-                                    } else {
-
-                                        FileOutputStream fos = new FileOutputStream(linkSaveFile.getText() + listimage.get(i).getName().replaceAll("[^a-zA-Z0-9\\s+]", "") + i + ".png");
-                                        fos.write(response2);
-                                        fos.close();
-
-                                    }
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                    continue;
-                                }
-                            }
-                        }
 
                     } catch (Exception e) {
-                        abcxyz.setText("Reject IP hoặc có lỗi xảy ra xin thử lại");
-
-                        return;
+                        e.printStackTrace();
+                        continue;
                     }
+                    
+                      
 
                 }
-
-                int dem = 0;
-                for (List<Image> partition : Lists.partition(listimage, Integer.parseInt(soluongDS.getText()))) {
-                    Workbook workbook = wirteExcel(partition);
-                    try ( // Write the output to a file
-                            FileOutputStream fileOut = new FileOutputStream(linkSaveFile.getText() + "contacts" + dem + ".xlsx")) {
-                        workbook.write(fileOut);
-                        //System.out.println("ok");
-                        abcxyz.setText("done!");
-                    }
-                    dem++;
-                }
-
             }
+            
+            
+            if (!listimage123.isEmpty()) {
+                                    for (int i = 0; i < listimage123.size(); i++) {
+                                        try {
+                                            status = "Lấy file \n" + listimage123.get(i).getUrl() + "\n" + "link số: " + (i + 1);
+                                            setStatus();
+                                            URL url = new URL(listimage123.get(i).getUrl());
+                                            //System.out.println(FilenameUtils.getBaseName(url.getPath())); // -> file
+                                            InputStream in = new BufferedInputStream(url.openStream());
+                                            ByteArrayOutputStream out2 = new ByteArrayOutputStream();
+                                            byte[] buf = new byte[2048];
+                                            int n = 0;
+                                            while (-1 != (n = in.read(buf))) {
+                                                out2.write(buf, 0, n);
+                                            }
+                                            out2.close();
+                                            in.close();
+                                            byte[] response2 = out2.toByteArray();
+                                            FileOutputStream fos = new FileOutputStream(linkSaveFile.getText() + listimage123.get(i).getAlt().replace("Click this link to access ", "") + ".jpg");
+                                            fos.write(response2);
+                                            fos.close();
+
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                            continue;
+                                        }
+                                    }
+                                }
+
+//            if (!listimage.isEmpty()) {
+//
+//                try {
+//
+////                     
+//                    if (!listimage.isEmpty()) {
+//                        for (int i = 0; i < listimage.size(); i++) {
+//                            try {
+//                                status = "Lấy file \n" + listimage.get(i).getUrl() + "\n" + "link số: " + (i + 1);
+//                                setStatus();
+//                                URL url = new URL(listimage.get(i).getUrl());
+//                                //System.out.println(FilenameUtils.getBaseName(url.getPath())); // -> file
+//                                InputStream in = new BufferedInputStream(url.openStream());
+//                                ByteArrayOutputStream out2 = new ByteArrayOutputStream();
+//                                byte[] buf = new byte[2048];
+//                                int n = 0;
+//                                while (-1 != (n = in.read(buf))) {
+//                                    out2.write(buf, 0, n);
+//                                }
+//                                out2.close();
+//                                in.close();
+//                                byte[] response2 = out2.toByteArray();
+//                                FileOutputStream fos = new FileOutputStream(linkSaveFile.getText() + listimage.get(i).getAlt().replace("Click this link to access ", "") + ".jpg");
+//                                fos.write(response2);
+//                                fos.close();
+//
+//                            } catch (Exception e) {
+//                                e.printStackTrace();
+//                                continue;
+//                            }
+//                        }
+//                    }
+//
+//                } catch (Exception e) {
+//                    abcxyz.setText("Reject IP hoặc có lỗi xảy ra xin thử lại");
+//
+//                    return;
+//                }
+//
+//            }
 
             //driver.close();
             // Logout
@@ -1298,7 +503,7 @@ public class ebay extends javax.swing.JFrame {
 
             ex.printStackTrace();
         }
-         this.jButton1.setEnabled(true);
+        this.jButton1.setEnabled(true);
     }
 
     public static Workbook wirteExcel(List<Image> listimage)
@@ -1434,7 +639,7 @@ public class ebay extends javax.swing.JFrame {
 
             @Override
             /*
-			 * Note: do not update the GUI from within doInBackground.
+             * Note: do not update the GUI from within doInBackground.
              */
             protected Boolean doInBackground() throws Exception {
 
@@ -1597,94 +802,9 @@ public class ebay extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_linkSaveFileActionPerformed
 
-    private void textURLForderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textURLForderActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textURLForderActionPerformed
-
-    private void theolinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_theolinkActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_theolinkActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        try {
-            ProtectionDomain pd = ebay.class.getProtectionDomain();
-            CodeSource cs = pd.getCodeSource();
-            URL location = cs.getLocation();
-
-            File directory4 = new File(location.getPath());
-            String PathLocal = directory4.getParentFile().getPath();
-            ThreadLocalRandom random = ThreadLocalRandom.current();
-
-            int rand = random.nextInt(1, 999999999);
-
-            Enumeration<NetworkInterface> networkInterfaces = NetworkInterface.getNetworkInterfaces();
-            String adip = "";
-            List<String> adress = new ArrayList<>();
-
-            while (networkInterfaces.hasMoreElements()) {
-                NetworkInterface ni = networkInterfaces.nextElement();
-                byte[] hardwareAddress = ni.getHardwareAddress();
-                if (hardwareAddress != null) {
-                    String[] hexadecimalFormat = new String[hardwareAddress.length];
-                    for (int i = 0; i < hardwareAddress.length; i++) {
-                        hexadecimalFormat[i] = String.format("%02X", hardwareAddress[i]);
-                    }
-                    adress.add(String.join("-", hexadecimalFormat));
-                    //System.out.println(String.join("-", hexadecimalFormat));
-                }
-            }
-
-            adip = String.join(",", adress);
-            //System.out.println("http://donthan.info/APIRED/index.php?key=" + rand + "&adress=" + adip + "&method=create");
-            String checkKeyUrl = "http://45.77.65.193:8080/insert";
-            subMitClass submitKey = new subMitClass();
-            submitKey.setKey(String.valueOf(rand));
-            submitKey.setAddress(adip);
-            Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            String bodyKey = gson.toJson(submitKey);
-
-            String respKey = callAPIPost(checkKeyUrl, bodyKey);
-            subMitClass submitRPKey = new subMitClass();
-            if (respKey != null && !respKey.isEmpty()) {
-                submitRPKey = gson.fromJson(respKey, subMitClass.class);
-                if (submitRPKey.getKey().equalsIgnoreCase("00")) {
-                    makey.setText(String.valueOf(rand));
-                    keyApi.setText(String.valueOf(rand));
-                    Key = String.valueOf(rand);
-
-                }
-
-            }
-
-        } catch (Exception e) {
-        }
-
-
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
-
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
-
-    private void tagexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tagexActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tagexActionPerformed
-
-    private void cantrenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantrenActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cantrenActionPerformed
-
-    private void soluongDSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_soluongDSActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_soluongDSActionPerformed
-
-    private void theopageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_theopageActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_theopageActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1711,21 +831,9 @@ public class ebay extends javax.swing.JFrame {
                             URL location = cs.getLocation();
                             File directory4 = new File(location.getPath());
                             String PathLocal = directory4.getParentFile().getPath().replace("%20", " ");
-                            String filename = PathLocal + "./key.txt";
-                            File myObj = new File(filename);
-                            Scanner myReader = new Scanner(myObj);
-
-                            while (myReader.hasNextLine()) {
-                                Key = myReader.nextLine();
-
-                            }
-                            myReader.close();
-                            if (!Key.isEmpty()) {
-                                abc.keyApi.setText(Key);
-                            }
                             String Fileconfig = PathLocal + "./config.txt";
                             File fileconfig = new File(Fileconfig);
-                            myReader = new Scanner(fileconfig);
+                            Scanner myReader = new Scanner(fileconfig);
                             String configSTR = "";
                             while (myReader.hasNextLine()) {
                                 configSTR = configSTR + myReader.nextLine();
@@ -1735,10 +843,6 @@ public class ebay extends javax.swing.JFrame {
 
                             Gson gson = new GsonBuilder().setPrettyPrinting().create();
                             Config conf = gson.fromJson(configSTR, Config.class);
-                            abc.hight.setText(conf.getDai());
-                            abc.tileresize.setText(conf.getPercentResize());
-                            abc.width.setText(conf.getRong());
-                            abc.soluongDS.setText(conf.getSoluongds());
                             abc.linkSaveFile.setText(conf.getUrlSave());
 
                         } catch (FileNotFoundException ex) {
@@ -1784,37 +888,15 @@ public class ebay extends javax.swing.JFrame {
     private javax.swing.JButton buttonChosefoder;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.JRadioButton cangiua;
-    private javax.swing.JRadioButton cantren;
-    private javax.swing.JCheckBox checkresize;
-    private javax.swing.JTextField hight;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField keyApi;
     private javax.swing.JTextField linkSaveFile;
-    private javax.swing.JTextArea makey;
     private javax.swing.JLabel result;
-    private javax.swing.JTextField soluongDS;
-    private javax.swing.JTextField tagex;
-    private javax.swing.JTextField textURLForder;
-    private javax.swing.JRadioButton theofile;
-    private javax.swing.JRadioButton theolink;
-    private javax.swing.JRadioButton theopage;
-    private javax.swing.JTextField tileresize;
-    private javax.swing.JTextField width;
     // End of variables declaration//GEN-END:variables
 }

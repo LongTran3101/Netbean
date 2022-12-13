@@ -91,7 +91,7 @@ import static redcrawl.ebay.status;
  *
  * @author me
  */
-public class c extends javax.swing.JFrame {
+public class KhongLuuSo2 extends javax.swing.JFrame {
 
     public static String status = "";
     private final String USER_AGENT = "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Chrome/W.X.Y.Z Safari/537.36";
@@ -105,7 +105,7 @@ public class c extends javax.swing.JFrame {
     static String Key;
     private Document page;
 
-    public c() {
+    public KhongLuuSo2() {
 
         initComponents();
     }
@@ -582,7 +582,7 @@ public class c extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Nhập key");
                 return;
             }
-            ProtectionDomain pd = c.class.getProtectionDomain();
+            ProtectionDomain pd = KhongLuuSo2.class.getProtectionDomain();
             CodeSource cs = pd.getCodeSource();
             URL location = cs.getLocation();
 
@@ -621,14 +621,12 @@ public class c extends javax.swing.JFrame {
             conf.setRong(this.width.getText());
             conf.setSoluongds(this.soluongDS.getText());
             conf.setUrlSave(this.linkSaveFile.getText());
-            if(    this.jRadioButton1.isSelected())
-            {
-                  conf.setIsDownloadMockup(1);
-            }else{
-                 conf.setIsDownloadMockup(0);
+            if (this.jRadioButton1.isSelected()) {
+                conf.setIsDownloadMockup(1);
+            } else {
+                conf.setIsDownloadMockup(0);
             }
-          
-        
+
             String configInfo = gson.toJson(conf);
             String fileconfig = PathLocal + "./config.txt";
             fw = new FileWriter(fileconfig); //the true will append the new data
@@ -935,7 +933,7 @@ public class c extends javax.swing.JFrame {
                 if (!listimagepost.isEmpty()) {
 
                     try {
-                      
+
                         if (!listimage.isEmpty()) {
                             for (int i = 0; i < listimage.size(); i++) {
                                 try {
@@ -974,81 +972,56 @@ public class c extends javax.swing.JFrame {
                                     in.close();
                                     byte[] response2 = out2.toByteArray();
 
-                                    if (checkresize.isSelected()) {
-                                        int newHeight = Integer.parseInt(hight.getText());
-                                        int newWidth = Integer.parseInt(width.getText());
-                                        int newHeightresize = Integer.parseInt(hight.getText()) * Integer.parseInt(tileresize.getText()) / 100;
-                                        int newWidthresize = Integer.parseInt(width.getText()) * Integer.parseInt(tileresize.getText()) / 100;
-                                        // PNG supports transparency
-                                        // int type = config.formatName.equals("png")?BufferedImage.TYPE_INT_ARGB:BufferedImage.TYPE_INT_RGB;
+                                    if (this.checkresize.isSelected()) {
+                                        int newHeight = Integer.parseInt(this.hight.getText());
+                                        int newWidth = Integer.parseInt(this.width.getText());
+                                        int newHeightresize = Integer.parseInt(this.hight.getText()) * Integer.parseInt(this.tileresize.getText()) / 100;
+                                        int newWidthresize = Integer.parseInt(this.width.getText()) * Integer.parseInt(this.tileresize.getText()) / 100;
                                         ByteArrayInputStream bais = new ByteArrayInputStream(response2);
-
                                         BufferedImage outputImage = null;
-
-                                        outputImage = ImageIO.read(bais);
-                                        //outputImage = trimImage(inputimage);
-
+                                        BufferedImage inputimage = ImageIO.read(bais);
+                                        outputImage = trimImage(inputimage);
                                         Scalr.Mode mode = Scalr.Mode.FIT_TO_HEIGHT;
+                                        
                                         BufferedImage outputImage2 = Scalr.resize(outputImage, Scalr.Method.ULTRA_QUALITY, mode, newWidthresize - 10, newHeightresize - 10, Scalr.OP_ANTIALIAS);
-                                        //System.out.println(outputImage2.getHeight());
                                         if (outputImage2.getWidth() > newWidth) {
                                             Scalr.Mode mode2 = Scalr.Mode.FIT_TO_WIDTH;
                                             outputImage2 = Scalr.resize(outputImage, Scalr.Method.ULTRA_QUALITY, mode2, newWidthresize - 10, newHeightresize - 10, Scalr.OP_ANTIALIAS);
-//                                            int hightwirte = Math.round(newHeight - outputImage2.getHeight());
-//                                            if((newHeight - outputImage2.getHeight())>35)
-//                                                 {
-//                                                        hightwirte = Math.round(newHeight - outputImage2.getHeight()+20);
-//                                                 }
-                                            int hightwirte = Math.round((newHeight - outputImage2.getHeight()) / 2);
-
-                                            if ((newHeight - outputImage2.getHeight()) > 400) {
+                                            int hightwirte = Math.round(((newHeight - outputImage2.getHeight()) / 2));
+                                            if (newHeight - outputImage2.getHeight() > 400) {
                                                 hightwirte = 400;
                                             }
-                                            if ((newHeight - outputImage2.getHeight()) > 600) {
+                                            if (newHeight - outputImage2.getHeight() > 600) {
                                                 hightwirte = 500;
                                             }
-                                            if ((newHeight - outputImage2.getHeight()) > 500) {
+                                            if (newHeight - outputImage2.getHeight() > 500) {
                                                 hightwirte = 450;
                                             }
-                                            int widthwirte = Math.round((newWidth - outputImage2.getWidth()) / 2);
-                                            int type = BufferedImage.TYPE_INT_ARGB;
-
+                                            int widthwirte = Math.round(((newWidth - outputImage2.getWidth()) / 2));
+                                            int type = 2;
                                             BufferedImage outputImage4 = new BufferedImage(newWidth, newHeight, type);
                                             Graphics2D graphics2D = outputImage4.createGraphics();
-                                            RenderingHints hints = new RenderingHints(RenderingHints.KEY_INTERPOLATION,
-                                                    RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+                                            RenderingHints hints = new RenderingHints(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
                                             hints.put(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
                                             hints.put(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
                                             graphics2D.setRenderingHints(hints);
-
                                             graphics2D.drawImage(outputImage2, widthwirte, hightwirte, null);
                                             graphics2D.dispose();
-
-                                            boolean check=ImageIO.write(outputImage4, "png", new File(linkSaveFile.getText() + listimage.get(i).getAlt().replaceAll("[^a-zA-Z0-9\\s+]", "") + i + ".png"));
-                                            if(check);
+                                            ImageIO.write(outputImage4, "png", new File(this.linkSaveFile.getText() + ((Image) listimage.get(i)).getAlt().replaceAll("[^a-zA-Z0-9\\s+]", "") +".png" ));
                                         } else {
-                                            int hightwirte = Math.round((newHeight - outputImage2.getHeight()) / 2);
-                                            int widthwirte = Math.round((newWidth - outputImage2.getWidth()) / 2);
-
-                                            int type = BufferedImage.TYPE_INT_ARGB;
-
+                                            int hightwirte = Math.round(((newHeight - outputImage2.getHeight()) / 2));
+                                            int widthwirte = Math.round(((newWidth - outputImage2.getWidth()) / 2));
+                                            int type = 2;
                                             BufferedImage outputImage4 = new BufferedImage(newWidth, newHeight, type);
                                             Graphics2D graphics2D = outputImage4.createGraphics();
-                                            RenderingHints hints = new RenderingHints(RenderingHints.KEY_INTERPOLATION,
-                                                    RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+                                            RenderingHints hints = new RenderingHints(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
                                             hints.put(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
                                             hints.put(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
                                             graphics2D.setRenderingHints(hints);
-
-                                            graphics2D.drawImage(outputImage2, widthwirte, hightwirte, null);
+                                            graphics2D.drawImage(outputImage2, widthwirte, hightwirte,  null);
                                             graphics2D.dispose();
-
-                                           boolean check= ImageIO.write(outputImage4, "png", new File(linkSaveFile.getText() + listimage.get(i).getAlt().replaceAll("[^a-zA-Z0-9\\s+]", "") + i + ".png"));
-                                           if(check);
+                                            ImageIO.write(outputImage4, "png", new File(this.linkSaveFile.getText() + ((Image) listimage.get(i)).getAlt().replaceAll("[^a-zA-Z0-9\\s+]", "") +".png" ));
                                         }
-
                                     } else {
 
                                         FileOutputStream fos = new FileOutputStream(linkSaveFile.getText() + listimage.get(i).getName());
@@ -1217,7 +1190,7 @@ public class c extends javax.swing.JFrame {
                             for (int i = 0; i < listresl.size(); i++) {
                                 try {
 
-                                    status = "Lấy file \n" + listresl.get(i).getUrl() + "\n" + "link số: "+i+"/" + (j);
+                                    status = "Lấy file \n" + listresl.get(i).getUrl() + "\n" + "link số: " + i + "/" + (j);
                                     if (jRadioButton1.isSelected()) {
                                         setStatus();
                                         URL url = new URL(listresl.get(i).getUrl());
@@ -1300,13 +1273,11 @@ public class c extends javax.swing.JFrame {
                                             graphics2D.drawImage(outputImage2, widthwirte, hightwirte, null);
                                             graphics2D.dispose();
 
-                                          
-                                             boolean check=   ImageIO.write(outputImage4, "png", new File(linkSaveFile.getText() + listresl.get(i).getAlt().replaceAll("[^a-zA-Z0-9\\s+]", "") + i + ".png"));
-                                           if(check);
+                                            boolean check = ImageIO.write(outputImage4, "png", new File(linkSaveFile.getText() + listresl.get(i).getAlt().replaceAll("[^a-zA-Z0-9\\s+]", "") + ".png"));
+                                            if (check);
                                         } else {
-                                            int hightwirte = Math.round((newHeight - outputImage2.getHeight()) / 2);
-                                            int widthwirte = Math.round((newWidth - outputImage2.getWidth()) / 2);
-
+                                            int hightwirte = Math.round(((newHeight - outputImage2.getHeight()) / 2));
+                                            int widthwirte = Math.round(((newWidth - outputImage2.getWidth()) / 2));
                                             int type = BufferedImage.TYPE_INT_ARGB;
 
                                             BufferedImage outputImage4 = new BufferedImage(newWidth, newHeight, type);
@@ -1321,8 +1292,8 @@ public class c extends javax.swing.JFrame {
                                             graphics2D.drawImage(outputImage2, widthwirte, hightwirte, null);
                                             graphics2D.dispose();
 
-                                              boolean check=   ImageIO.write(outputImage4, "png", new File(linkSaveFile.getText() + listresl.get(i).getAlt().replaceAll("[^a-zA-Z0-9\\s+]", "") + i + ".png"));
-                                           if(check);
+                                            boolean check = ImageIO.write(outputImage4, "png", new File(linkSaveFile.getText() + listresl.get(i).getAlt().replaceAll("[^a-zA-Z0-9\\s+]", "") + ".png"));
+                                            if (check);
                                         }
 
                                     } else {
@@ -1677,7 +1648,7 @@ public class c extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
-            ProtectionDomain pd = c.class.getProtectionDomain();
+            ProtectionDomain pd = KhongLuuSo2.class.getProtectionDomain();
             CodeSource cs = pd.getCodeSource();
             URL location = cs.getLocation();
 
@@ -1764,7 +1735,7 @@ public class c extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
 
-                c abc = new c();
+                KhongLuuSo2 abc = new KhongLuuSo2();
                 abc.addWindowListener(new WindowAdapter() {
                     @Override
                     public void windowClosing(WindowEvent e) {
@@ -1776,7 +1747,7 @@ public class c extends javax.swing.JFrame {
                     public void windowOpened(WindowEvent e) {
 
                         try {
-                            ProtectionDomain pd = c.class.getProtectionDomain();
+                            ProtectionDomain pd = KhongLuuSo2.class.getProtectionDomain();
                             CodeSource cs = pd.getCodeSource();
                             URL location = cs.getLocation();
                             File directory4 = new File(location.getPath());
@@ -1810,13 +1781,12 @@ public class c extends javax.swing.JFrame {
                             abc.width.setText(conf.getRong());
                             abc.soluongDS.setText(conf.getSoluongds());
                             abc.linkSaveFile.setText(conf.getUrlSave());
-                            if( conf.getIsDownloadMockup()==1)
-                            {
+                            if (conf.getIsDownloadMockup() == 1) {
                                 abc.jRadioButton1.setSelected(true);
                             }
 
                         } catch (FileNotFoundException ex) {
-                            Logger.getLogger(c.class.getName()).log(Level.SEVERE, null, ex);
+                            Logger.getLogger(KhongLuuSo2.class.getName()).log(Level.SEVERE, null, ex);
                         }
 
                     }
@@ -1847,7 +1817,7 @@ public class c extends javax.swing.JFrame {
             }
 
         } catch (Exception ex) {
-            Logger.getLogger(c.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(KhongLuuSo2.class.getName()).log(Level.SEVERE, null, ex);
         }
         return urlresturn;
     }

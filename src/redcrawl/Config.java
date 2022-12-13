@@ -63,4 +63,11 @@ public class Config {
     public void setDai(String dai) {
         this.dai = dai;
     }
+      public static String textConvert(String a) {
+        String b = a.replace("https://ih1.redbubble.net/", "");
+        int firstIndex = b.indexOf('/');
+        String abc = "https://ih0.redbubble.net/" + b.substring(0, firstIndex) + "/--.u1.png";
+        return abc;
+    }
+
 }

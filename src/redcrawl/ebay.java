@@ -379,7 +379,7 @@ public class ebay extends javax.swing.JFrame {
                         setStatus();
                         page = Jsoup.connect(line).userAgent(USER_AGENT).timeout(20 * 1000).get();
 
-                        Elements links = page.select(".mimg");
+                        Elements links = page.select(".sresult");
 //                            if (!links.isEmpty()) {
 //                                links.remove(links.size() - 1);
 //
@@ -394,7 +394,7 @@ public class ebay extends javax.swing.JFrame {
                                 String urlimage = src.replace("225", "1600");
 
                                 //System.out.println(urlimage);
-                                Element elmTtitle = link.getElementsByClass("gvtitle").first();
+                                Element elmTtitle = link.getElementsByTag("h3").first();
                                 Element elmTtitleA = elmTtitle.getElementsByTag("a").first();
                                 String title = elmTtitleA.attr("title");
 

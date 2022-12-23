@@ -971,64 +971,14 @@ public class KhongLuuSo2 extends javax.swing.JFrame {
                                     out2.close();
                                     in.close();
                                     byte[] response2 = out2.toByteArray();
+                                    ByteArrayInputStream bais = new ByteArrayInputStream(response2);
+                                    BufferedImage outputImage = null;
+                                    BufferedImage inputimage = ImageIO.read(bais);
+                                    BufferedImage outputImage2 = trimImage(inputimage);
+                                    Scalr.Mode mode = Scalr.Mode.FIT_TO_HEIGHT;
+                                    File outputfile = new File(linkSaveFile.getText() + listimage.get(i).getAlt() + ".png");
+                                    ImageIO.write(outputImage2, "png", outputfile);
 
-                                    if (this.checkresize.isSelected()) {
-                                        int newHeight = Integer.parseInt(this.hight.getText());
-                                        int newWidth = Integer.parseInt(this.width.getText());
-                                        int newHeightresize = Integer.parseInt(this.hight.getText()) * Integer.parseInt(this.tileresize.getText()) / 100;
-                                        int newWidthresize = Integer.parseInt(this.width.getText()) * Integer.parseInt(this.tileresize.getText()) / 100;
-                                        ByteArrayInputStream bais = new ByteArrayInputStream(response2);
-                                        BufferedImage outputImage = null;
-                                        BufferedImage inputimage = ImageIO.read(bais);
-                                        outputImage = trimImage(inputimage);
-                                        Scalr.Mode mode = Scalr.Mode.FIT_TO_HEIGHT;
-                                        
-                                        BufferedImage outputImage2 = Scalr.resize(outputImage, Scalr.Method.ULTRA_QUALITY, mode, newWidthresize - 10, newHeightresize - 10, Scalr.OP_ANTIALIAS);
-                                        if (outputImage2.getWidth() > newWidth) {
-                                            Scalr.Mode mode2 = Scalr.Mode.FIT_TO_WIDTH;
-                                            outputImage2 = Scalr.resize(outputImage, Scalr.Method.ULTRA_QUALITY, mode2, newWidthresize - 10, newHeightresize - 10, Scalr.OP_ANTIALIAS);
-                                            int hightwirte = Math.round(((newHeight - outputImage2.getHeight()) / 2));
-                                            if (newHeight - outputImage2.getHeight() > 400) {
-                                                hightwirte = 400;
-                                            }
-                                            if (newHeight - outputImage2.getHeight() > 600) {
-                                                hightwirte = 500;
-                                            }
-                                            if (newHeight - outputImage2.getHeight() > 500) {
-                                                hightwirte = 450;
-                                            }
-                                            int widthwirte = Math.round(((newWidth - outputImage2.getWidth()) / 2));
-                                            int type = 2;
-                                            BufferedImage outputImage4 = new BufferedImage(newWidth, newHeight, type);
-                                            Graphics2D graphics2D = outputImage4.createGraphics();
-                                            RenderingHints hints = new RenderingHints(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-                                            hints.put(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-                                            hints.put(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-                                            graphics2D.setRenderingHints(hints);
-                                            graphics2D.drawImage(outputImage2, widthwirte, hightwirte, null);
-                                            graphics2D.dispose();
-                                            ImageIO.write(outputImage4, "png", new File(this.linkSaveFile.getText() + ((Image) listimage.get(i)).getAlt().replaceAll("[^a-zA-Z0-9\\s+]", "") +".png" ));
-                                        } else {
-                                            int hightwirte = Math.round(((newHeight - outputImage2.getHeight()) / 2));
-                                            int widthwirte = Math.round(((newWidth - outputImage2.getWidth()) / 2));
-                                            int type = 2;
-                                            BufferedImage outputImage4 = new BufferedImage(newWidth, newHeight, type);
-                                            Graphics2D graphics2D = outputImage4.createGraphics();
-                                            RenderingHints hints = new RenderingHints(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-                                            hints.put(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-                                            hints.put(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-                                            graphics2D.setRenderingHints(hints);
-                                            graphics2D.drawImage(outputImage2, widthwirte, hightwirte,  null);
-                                            graphics2D.dispose();
-                                            ImageIO.write(outputImage4, "png", new File(this.linkSaveFile.getText() + ((Image) listimage.get(i)).getAlt().replaceAll("[^a-zA-Z0-9\\s+]", "") +".png" ));
-                                        }
-                                    } else {
-
-                                        FileOutputStream fos = new FileOutputStream(linkSaveFile.getText() + listimage.get(i).getName());
-                                        fos.write(response2);
-                                        fos.close();
-
-                                    }
 
                                 } catch (Exception e) {
                                     e.printStackTrace();
@@ -1205,7 +1155,7 @@ public class KhongLuuSo2 extends javax.swing.JFrame {
                                         out2.close();
                                         in.close();
                                         byte[] response2 = out2.toByteArray();
-                                        FileOutputStream fos = new FileOutputStream(linkSaveFile.getText() + listresl.get(i).getAlt().replaceAll("[^a-zA-Z0-9\\s+]", "") + i + ".jpg");
+                                        FileOutputStream fos = new FileOutputStream(linkSaveFile.getText() + listresl.get(i).getAlt().replaceAll("[^a-zA-Z0-9\\s+]", "") + ".jpg");
                                         fos.write(response2);
                                         fos.close();
                                     }
@@ -1298,7 +1248,7 @@ public class KhongLuuSo2 extends javax.swing.JFrame {
 
                                     } else {
 
-                                        FileOutputStream fos = new FileOutputStream(linkSaveFile.getText() + listresl.get(i).getName());
+                                        FileOutputStream fos = new FileOutputStream(linkSaveFile.getText() + listresl.get(i).getAlt() + ".png");
                                         fos.write(response2);
                                         fos.close();
 

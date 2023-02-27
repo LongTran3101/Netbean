@@ -235,6 +235,9 @@ public class zazzle extends javax.swing.JFrame {
         tileresize = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        cokie = new javax.swing.JTextArea();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("TOOL CRAWL RED");
@@ -378,6 +381,12 @@ public class zazzle extends javax.swing.JFrame {
                 }
             });
 
+            cokie.setColumns(20);
+            cokie.setRows(5);
+            jScrollPane3.setViewportView(cokie);
+
+            jLabel9.setText("cokie");
+
             javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
             getContentPane().setLayout(layout);
             layout.setHorizontalGroup(
@@ -394,38 +403,6 @@ public class zazzle extends javax.swing.JFrame {
                                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGap(112, 112, 112))
                                         .addGroup(layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                    .addComponent(soluongDS))
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(theolink)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                            .addComponent(theofile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                            .addComponent(width, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(layout.createSequentialGroup()
-                                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                            .addComponent(theopage))
-                                                        .addGroup(layout.createSequentialGroup()
-                                                            .addGap(56, 56, 56)
-                                                            .addComponent(cantren)
-                                                            .addGap(18, 18, 18)
-                                                            .addComponent(cangiua)))
-                                                    .addGap(0, 0, Short.MAX_VALUE))
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addGap(18, 18, 18)
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(tagex)
-                                                        .addComponent(jScrollPane1))))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                        .addGroup(layout.createSequentialGroup()
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addGroup(layout.createSequentialGroup()
                                                     .addComponent(checkresize)
@@ -433,9 +410,51 @@ public class zazzle extends javax.swing.JFrame {
                                                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                     .addComponent(hight, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jRadioButton1))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                            .addComponent(jRadioButton1)
+                                                            .addGap(135, 135, 135))
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                                    .addComponent(jScrollPane3))
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                            .addComponent(soluongDS))
+                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addGroup(layout.createSequentialGroup()
+                                                                .addComponent(theolink)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                                    .addComponent(theofile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                    .addComponent(width, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addGroup(layout.createSequentialGroup()
+                                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                    .addComponent(theopage))
+                                                                .addGroup(layout.createSequentialGroup()
+                                                                    .addGap(56, 56, 56)
+                                                                    .addComponent(cantren)
+                                                                    .addGap(18, 18, 18)
+                                                                    .addComponent(cangiua)))
+                                                            .addGap(0, 0, Short.MAX_VALUE))
+                                                        .addGroup(layout.createSequentialGroup()
+                                                            .addGap(18, 18, 18)
+                                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addComponent(tagex)
+                                                                .addComponent(jScrollPane1))))))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                                     .addComponent(result))
                                 .addComponent(jTextField4)
                                 .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)
@@ -496,15 +515,20 @@ public class zazzle extends javax.swing.JFrame {
                             .addComponent(result)
                             .addGap(25, 25, 25))
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(tileresize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel8)))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jRadioButton1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(tileresize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel9))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel8)))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jRadioButton1))
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(theolink)
                         .addComponent(theofile)
@@ -536,7 +560,7 @@ public class zazzle extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(jButton2)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -592,7 +616,7 @@ public class zazzle extends javax.swing.JFrame {
             Enumeration<NetworkInterface> networkInterfaces = NetworkInterface.getNetworkInterfaces();
             String adip = "";
             List<String> adress = new ArrayList<>();
-
+            String cokiestr = this.cokie.getText();
             while (networkInterfaces.hasMoreElements()) {
                 NetworkInterface ni = networkInterfaces.nextElement();
                 byte[] hardwareAddress = ni.getHardwareAddress();
@@ -621,14 +645,12 @@ public class zazzle extends javax.swing.JFrame {
             conf.setRong(this.width.getText());
             conf.setSoluongds(this.soluongDS.getText());
             conf.setUrlSave(this.linkSaveFile.getText());
-            if(    this.jRadioButton1.isSelected())
-            {
-                  conf.setIsDownloadMockup(1);
-            }else{
-                 conf.setIsDownloadMockup(0);
+            if (this.jRadioButton1.isSelected()) {
+                conf.setIsDownloadMockup(1);
+            } else {
+                conf.setIsDownloadMockup(0);
             }
-          
-        
+
             String configInfo = gson.toJson(conf);
             String fileconfig = PathLocal + "./config.txt";
             fw = new FileWriter(fileconfig); //the true will append the new data
@@ -682,57 +704,28 @@ public class zazzle extends javax.swing.JFrame {
                 try {
                     status = textURLForder.getText();
                     setStatus();
-                    page = Jsoup.connect(textURLForder.getText()).userAgent(USER_AGENT).timeout(20 * 1000).get();
-                    Elements link3 = page.select(".GalleryImage__img--2Epz2");
-                    Element link2;
-                    if (link3 != null && !link3.isEmpty() && link3.size() > 2) {
-                        link2 = link3.get(1);
-                    } else {
-                        link2 = page.selectFirst(".GalleryImage__img--2Epz2");
-                    }
-                    //Element link2 = page.selectFirst(".PreviewGallery__rightColumn--2z6Zx .GalleryImage__img--2Epz2");
-                    Elements listag = page.select("#work-tags a");
+                    Document page = Jsoup.connect(textURLForder.getText())
+                            .userAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36")
+                            .header("cookie", this.cokie.getText())
+                            //.header("x-csrf-token", "2418afe1a459f661")
+                            .header("authority", "www.zazzle.com")
+                            .header("accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7")
+                            .timeout(5000)
+                            .get();
+                    String a = page.toString();
+                   int bcd=a.indexOf("mainDesignViewId") ;
+			String efg=a.substring(bcd, (bcd+37));
+			String id=efg.substring(19,37);
+			String temp =a.substring(bcd, (bcd+500));
+			int index=temp.indexOf("design") ;
+			String designtemp=temp.substring(index,index+45).replace("design\":\"", "");
+                    //System.out.println(doc.title());
+                    String link = "https://rlv.zcache.com/svc/view?realview=" + id + "&design=" + designtemp + "&rlvnet=1&style=hanes_mens_crew_darktshirt_5250&color=black&size=a_s&max_dim=2000&hide=bleed%2Csafe%2Cvisible%2CvisibleMask&bg=0x00000000&image_type=png&rvtype=content&csa=true&areacolor=false";
+
                     // System.out.println("link2");
+                    String title = page.title().replace(" | Zazzle", "");
 
-                    String urlimage = link2.attr("src");
-
-                    //System.out.println(urlimage);
-                    String title = link2.attr("alt").substring(0, link2.attr("alt").lastIndexOf(" by "));
-
-                    String tag = "";
-                    if (listag != null) {
-                        for (Element element : listag) {
-                            tag = tag + element.attr("title") + ",";
-                        }
-                        tag = tag + ",gift,idea,design,quote,sayings,funny,present,humor,birthday,christmas,sarcasm";
-                    }
-
-                    List<Image> objSubmid = new ArrayList<Image>();
-                    Image a = new Image();
-
-                    a.url = urlimage;
-                    a.alt = title;
-                    a.tag = tag;
-                    objSubmid.add(a);
-
-                    subMitClass submit = new subMitClass();
-                    submit.setLstImage(objSubmid);
-                    submit.setKey(Key);
-                    submit.setAddress(adip);
-
-                    String completeUrl = "http://45.32.101.196:8080/restApi/upload";
-
-                    String body = gson.toJson(submit);
-
-                    String resp = callAPIPost(completeUrl, body);
-                    subMitClass submitRP = new subMitClass();
-                    if (resp != null && !resp.isEmpty()) {
-                        submitRP = gson.fromJson(resp, subMitClass.class);
-
-                    }
-
-//                  
-                    URL url = new URL(submitRP.getLstImage().get(0).getUrlpng());
+                    URL url = new URL(link);
                     //System.out.println(FilenameUtils.getBaseName(url.getPath())); // -> file
                     InputStream in = new BufferedInputStream(url.openStream());
                     ByteArrayOutputStream out2 = new ByteArrayOutputStream();
@@ -756,14 +749,14 @@ public class zazzle extends javax.swing.JFrame {
                         BufferedImage outputImage = null;
 
                         outputImage = ImageIO.read(bais);
-                        //outputImage = trimImage(inputimage);
+                        outputImage = trimImage(outputImage);
 
                         Scalr.Mode mode = Scalr.Mode.FIT_TO_HEIGHT;
-                        BufferedImage outputImage2 = Scalr.resize(outputImage, Scalr.Method.ULTRA_QUALITY, mode, newWidthresize - 10, newHeightresize - 10, Scalr.OP_ANTIALIAS);
+                        BufferedImage outputImage2 = Scalr.resize(outputImage, Scalr.Method.ULTRA_QUALITY, mode, newWidthresize, newHeightresize, Scalr.OP_ANTIALIAS);
                         //System.out.println(outputImage2.getHeight());
                         if (outputImage2.getWidth() > newWidth) {
                             Scalr.Mode mode2 = Scalr.Mode.FIT_TO_WIDTH;
-                            outputImage2 = Scalr.resize(outputImage, Scalr.Method.ULTRA_QUALITY, mode2, newWidthresize - 10, newHeightresize - 10, Scalr.OP_ANTIALIAS);
+                            outputImage2 = Scalr.resize(outputImage, Scalr.Method.ULTRA_QUALITY, mode2, newWidthresize, newHeightresize, Scalr.OP_ANTIALIAS);
 //                                            int hightwirte = Math.round(newHeight - outputImage2.getHeight());
 //                                            if((newHeight - outputImage2.getHeight())>35)
 //                                                 {
@@ -771,14 +764,8 @@ public class zazzle extends javax.swing.JFrame {
 //                                                 }
                             int hightwirte = Math.round((newHeight - outputImage2.getHeight()) / 2);
 
-                            if ((newHeight - outputImage2.getHeight()) > 400) {
-                                hightwirte = 400;
-                            }
-                            if ((newHeight - outputImage2.getHeight()) > 600) {
-                                hightwirte = 500;
-                            }
-                            if ((newHeight - outputImage2.getHeight()) > 500) {
-                                hightwirte = 450;
+                            if ((newHeight - outputImage2.getHeight()) > 100) {
+                                hightwirte = 100;
                             }
                             int widthwirte = Math.round((newWidth - outputImage2.getWidth()) / 2);
                             int type = BufferedImage.TYPE_INT_ARGB;
@@ -801,31 +788,6 @@ public class zazzle extends javax.swing.JFrame {
                             int widthwirte = Math.round((newWidth - outputImage2.getWidth()) / 2);
                             if ((newHeight - outputImage2.getHeight()) > 100) {
                                 hightwirte = 100;
-                            }
-                            if ((newHeight - outputImage2.getHeight()) > 200) {
-                                hightwirte = 200;
-                            }
-                            if ((newHeight - outputImage2.getHeight()) > 400) {
-                                hightwirte = 400;
-
-                            }
-                            if ((newHeight - outputImage2.getHeight()) > 500) {
-                                hightwirte = 450;
-                            }
-                            if ((newHeight - outputImage2.getHeight()) > 600) {
-                                hightwirte = 500;
-                            }
-                            if ((newHeight - outputImage2.getHeight()) > 700) {
-                                hightwirte = 700;
-                            }
-                            if ((newHeight - outputImage2.getHeight()) > 800) {
-                                hightwirte = 800;
-                            }
-                            if ((newHeight - outputImage2.getHeight()) > 800) {
-                                hightwirte = 900;
-                            }
-                            if ((newHeight - outputImage2.getHeight()) > 800) {
-                                hightwirte = 1000;
                             }
 
                             int type = BufferedImage.TYPE_INT_ARGB;
@@ -879,49 +841,39 @@ public class zazzle extends javax.swing.JFrame {
                         try {
                             status = "Lấy thông tin \n" + line + "\n" + "link số: " + (j + 1);
                             setStatus();
-                            page = Jsoup.connect(line).userAgent(USER_AGENT).get();
-                            Elements link3 = page.select(".GalleryImage__img--2Epz2");
-                            Element link2;
-                            Element link4 = null;
-                            if (link3 != null && !link3.isEmpty() && link3.size() > 2) {
-                                link2 = link3.get(1);
-                                link4 = link3.get(2);
-                            } else {
-                                link2 = page.selectFirst(".GalleryImage__img--2Epz2");
-                                link4 = page.selectFirst(".GalleryImage__img--2Epz2");
-                            }
+                            Thread.sleep(5000);
+                            Document page = Jsoup.connect(line)
+                                    .userAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36")
+                                    .header("cookie", cokiestr)
+                                    //.header("x-csrf-token", "2418afe1a459f661")
+                                    .header("authority", "www.zazzle.com")
+                                    .header("accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7")
+                                    .timeout(5000)
+                                    .get();
+                            String pageString = page.toString();
+                            
+                            int bcd=pageString.indexOf("mainDesignViewId") ;
+			String efg=pageString.substring(bcd, (bcd+37));
+			String id=efg.substring(19,37);
+			String temp =pageString.substring(bcd, (bcd+1000));
+			int index=temp.indexOf("design") ;
+			String designtemp=temp.substring(index,index+45).replace("design\":\"", "");
+                            
+                           
+                            //System.out.println(temp);
+                            //System.out.println(design);
+                            //System.out.println(doc.title());
+                            String link = "https://rlv.zcache.com/svc/view?realview=" + id + "&design=" + designtemp + "&rlvnet=1&style=hanes_mens_crew_darktshirt_5250&color=black&size=a_s&max_dim=2000&hide=bleed%2Csafe%2Cvisible%2CvisibleMask&bg=0x00000000&image_type=png&rvtype=content&csa=true&areacolor=false";
 
-                            //Element link2 = page.selectFirst(".GalleryImage__img--2Epz2");
-                            Elements listag = page.select("#work-tags a");
                             // System.out.println("link2");
-
-                            String urlimage = link4.attr("src");
-
-                            // System.out.println(urlimage);
-                            String title = link2.attr("alt").substring(0, link2.attr("alt").lastIndexOf(" by "));
-                            String tagex = this.tagex.getText();
-                            String tag = "";
-                            if (listag != null) {
-                                for (Element element : listag) {
-                                    if (!tagex.contains(element.attr("title"))) {
-                                        tag = tag + element.attr("title") + ",";
-                                    }
-                                }
-
-                            }
-
+                            String title = page.title().replace(" | Zazzle", "");
                             Image a = new Image();
-                            if (!urlimage.isEmpty() && urlimage.contains("101010")) {
-                                a.color = "1";
-                            } else {
-                                a.color = "2";
-                            }
-                            a.url = urlimage;
 
-                            listimagepost.add(new image1(urlimage));
+                            a.url = line;
+                            a.urlpng = link;
+
                             a.alt = title;
-                            a.tagchuan = tag;
-                            a.name = title.replaceAll("[^a-zA-Z0-9\\s+]", "") + j + ".png";
+                            a.name = title.replaceAll("[^a-zA-Z0-9\\s+]", "") + ".png";
                             listimage.add(a);
                             j++;
                         } catch (Exception e) {
@@ -932,59 +884,17 @@ public class zazzle extends javax.swing.JFrame {
                     }
                 }
 
-                if (!listimagepost.isEmpty()) {
+                if (!listimage.isEmpty()) {
 
                     try {
-                        subMitClass submit = new subMitClass();
-                        submit.setLstImage(listimage);
-                        submit.setKey(Key);
-                        submit.setAddress(adip);
 
-                        String completeUrl = "http://45.32.101.196:8080/restApi/upload";
-
-                        String body = gson.toJson(submit);
-
-                        String resp = callAPIPost(completeUrl, body);
-                        subMitClass submitRP = new subMitClass();
-                        if (resp != null && !resp.isEmpty()) {
-                            submitRP = gson.fromJson(resp, subMitClass.class);
-
-                        }
-
-//                        HttpPost post = new HttpPost("http://donthan.info/APIRED/get2.php");
-//                        ObjectMapper mapper = new ObjectMapper();
-//                        final ByteArrayOutputStream out = new ByteArrayOutputStream();
-//
-//                        mapper.writeValue(out, listimagepost);
-//
-//                        final byte[] data = out.toByteArray();
-//                        String jsoninput = new String(data);
-//                        List<NameValuePair> urlParameters = new ArrayList<>();
-//                        urlParameters.add(new BasicNameValuePair("key", Key));
-//                        urlParameters.add(new BasicNameValuePair("urlimage", jsoninput));
-//                        urlParameters.add(new BasicNameValuePair("address", adip));
-//
-//                        post.setEntity(new UrlEncodedFormEntity(urlParameters));
-//                        CloseableHttpClient httpClient = HttpClients.createDefault();
-//                        CloseableHttpResponse response = httpClient.execute(post);
-//                        List<image1> participantJsonList = mapper.readValue(EntityUtils.toString(response.getEntity()), new TypeReference<List<image1>>() {
-//                        });
-                        List<Image> listRS = submitRP.getLstImage();
-                        String f123 = PathLocal + "./log.txt";
-                        //Bước 2: Ghi dữ liệu
-                        try (FileWriter fw23 = new FileWriter(f123)) {
-                            //Bước 2: Ghi dữ liệu
-                            fw23.write("Ghi dữ liệu bằng luồng character  " + listRS.size() + "-" + listRS.size());
-                            fw23.close();
-                            //Bước 3: Đóng luồng
-                        }
-                        if (!listRS.isEmpty()) {
-                            for (int i = 0; i < listRS.size(); i++) {
+                        if (!listimage.isEmpty()) {
+                            for (int i = 0; i < listimage.size(); i++) {
                                 try {
                                     if (jRadioButton1.isSelected()) {
-                                        status = "Lấy file \n" + listRS.get(i).getUrl() + "\n" + "link số: " + i;
+                                        status = "Lấy file \n" + listimage.get(i).getUrl() + "\n" + "link số: " + i;
                                         setStatus();
-                                        URL url = new URL(listRS.get(i).getUrl());
+                                        URL url = new URL(listimage.get(i).getUrl());
                                         //System.out.println(FilenameUtils.getBaseName(url.getPath())); // -> file
                                         InputStream in = new BufferedInputStream(url.openStream());
                                         ByteArrayOutputStream out2 = new ByteArrayOutputStream();
@@ -996,14 +906,14 @@ public class zazzle extends javax.swing.JFrame {
                                         out2.close();
                                         in.close();
                                         byte[] response2 = out2.toByteArray();
-                                        FileOutputStream fos = new FileOutputStream(linkSaveFile.getText() + listRS.get(i).getAlt().replaceAll("[^a-zA-Z0-9\\s+]", "") + i + ".jpg");
+                                        FileOutputStream fos = new FileOutputStream(linkSaveFile.getText() + listimage.get(i).getAlt().replaceAll("[^a-zA-Z0-9\\s+]", "") + i + ".jpg");
                                         fos.write(response2);
                                         fos.close();
                                     }
 
-                                    status = "Tải file \n" + listRS.get(i).url + "\n" + (i + 1) + "/" + (listRS.size());
+                                    status = "Tải file \n" + listimage.get(i).url + "\n" + (i + 1) + "/" + (listimage.size());
                                     setStatus();
-                                    URL url = new URL(listRS.get(i).getUrlpng());
+                                    URL url = new URL(listimage.get(i).getUrlpng());
                                     //System.out.println(FilenameUtils.getBaseName(url.getPath())); // -> file
                                     InputStream in = new BufferedInputStream(url.openStream());
                                     ByteArrayOutputStream out2 = new ByteArrayOutputStream();
@@ -1028,7 +938,7 @@ public class zazzle extends javax.swing.JFrame {
                                         BufferedImage outputImage = null;
 
                                         outputImage = ImageIO.read(bais);
-                                        //outputImage = trimImage(inputimage);
+                                        outputImage = trimImage(outputImage);
 
                                         Scalr.Mode mode = Scalr.Mode.FIT_TO_HEIGHT;
                                         BufferedImage outputImage2 = Scalr.resize(outputImage, Scalr.Method.ULTRA_QUALITY, mode, newWidthresize - 10, newHeightresize - 10, Scalr.OP_ANTIALIAS);
@@ -1043,15 +953,10 @@ public class zazzle extends javax.swing.JFrame {
 //                                                 }
                                             int hightwirte = Math.round((newHeight - outputImage2.getHeight()) / 2);
 
-                                            if ((newHeight - outputImage2.getHeight()) > 400) {
-                                                hightwirte = 400;
+                                            if ((newHeight - outputImage2.getHeight()) > 100) {
+                                                hightwirte = 100;
                                             }
-                                            if ((newHeight - outputImage2.getHeight()) > 600) {
-                                                hightwirte = 500;
-                                            }
-                                            if ((newHeight - outputImage2.getHeight()) > 500) {
-                                                hightwirte = 450;
-                                            }
+
                                             int widthwirte = Math.round((newWidth - outputImage2.getWidth()) / 2);
                                             int type = BufferedImage.TYPE_INT_ARGB;
 
@@ -1067,12 +972,14 @@ public class zazzle extends javax.swing.JFrame {
                                             graphics2D.drawImage(outputImage2, widthwirte, hightwirte, null);
                                             graphics2D.dispose();
 
-                                            boolean check=ImageIO.write(outputImage4, "png", new File(linkSaveFile.getText() + listRS.get(i).getAlt().replaceAll("[^a-zA-Z0-9\\s+]", "") + i + ".png"));
-                                            if(check);
+                                            boolean check = ImageIO.write(outputImage4, "png", new File(linkSaveFile.getText() + listimage.get(i).getAlt().replaceAll("[^a-zA-Z0-9\\s+]", "")  + ".png"));
+                                            if (check);
                                         } else {
                                             int hightwirte = Math.round((newHeight - outputImage2.getHeight()) / 2);
                                             int widthwirte = Math.round((newWidth - outputImage2.getWidth()) / 2);
-
+                                            if ((newHeight - outputImage2.getHeight()) > 100) {
+                                                hightwirte = 100;
+                                            } 
                                             int type = BufferedImage.TYPE_INT_ARGB;
 
                                             BufferedImage outputImage4 = new BufferedImage(newWidth, newHeight, type);
@@ -1087,13 +994,13 @@ public class zazzle extends javax.swing.JFrame {
                                             graphics2D.drawImage(outputImage2, widthwirte, hightwirte, null);
                                             graphics2D.dispose();
 
-                                           boolean check= ImageIO.write(outputImage4, "png", new File(linkSaveFile.getText() + listRS.get(i).getName()));
-                                           if(check);
+                                           boolean check = ImageIO.write(outputImage4, "png", new File(linkSaveFile.getText() + listimage.get(i).getAlt().replaceAll("[^a-zA-Z0-9\\s+]", "")  + ".png"));
+                                            if (check);
                                         }
 
                                     } else {
 
-                                        FileOutputStream fos = new FileOutputStream(linkSaveFile.getText() + listRS.get(i).getName());
+                                        FileOutputStream fos = new FileOutputStream(linkSaveFile.getText() + listimage.get(i).getName());
                                         fos.write(response2);
                                         fos.close();
 
@@ -1259,7 +1166,7 @@ public class zazzle extends javax.swing.JFrame {
                             for (int i = 0; i < listresl.size(); i++) {
                                 try {
 
-                                    status = "Lấy file \n" + listresl.get(i).getUrl() + "\n" + "link số: "+i+"/" + (j);
+                                    status = "Lấy file \n" + listresl.get(i).getUrl() + "\n" + "link số: " + i + "/" + (j);
                                     if (jRadioButton1.isSelected()) {
                                         setStatus();
                                         URL url = new URL(listresl.get(i).getUrl());
@@ -1342,9 +1249,8 @@ public class zazzle extends javax.swing.JFrame {
                                             graphics2D.drawImage(outputImage2, widthwirte, hightwirte, null);
                                             graphics2D.dispose();
 
-                                          
-                                             boolean check=   ImageIO.write(outputImage4, "png", new File(linkSaveFile.getText() + listresl.get(i).getName()));
-                                           if(check);
+                                            boolean check = ImageIO.write(outputImage4, "png", new File(linkSaveFile.getText() + listresl.get(i).getName()));
+                                            if (check);
                                         } else {
                                             int hightwirte = Math.round((newHeight - outputImage2.getHeight()) / 2);
                                             int widthwirte = Math.round((newWidth - outputImage2.getWidth()) / 2);
@@ -1363,8 +1269,8 @@ public class zazzle extends javax.swing.JFrame {
                                             graphics2D.drawImage(outputImage2, widthwirte, hightwirte, null);
                                             graphics2D.dispose();
 
-                                              boolean check=   ImageIO.write(outputImage4, "png", new File(linkSaveFile.getText() + listresl.get(i).getName()));
-                                           if(check);
+                                            boolean check = ImageIO.write(outputImage4, "png", new File(linkSaveFile.getText() + listresl.get(i).getName()));
+                                            if (check);
                                         }
 
                                     } else {
@@ -1852,8 +1758,7 @@ public class zazzle extends javax.swing.JFrame {
                             abc.width.setText(conf.getRong());
                             abc.soluongDS.setText(conf.getSoluongds());
                             abc.linkSaveFile.setText(conf.getUrlSave());
-                            if( conf.getIsDownloadMockup()==1)
-                            {
+                            if (conf.getIsDownloadMockup() == 1) {
                                 abc.jRadioButton1.setSelected(true);
                             }
 
@@ -1903,6 +1808,7 @@ public class zazzle extends javax.swing.JFrame {
     private javax.swing.JRadioButton cangiua;
     private javax.swing.JRadioButton cantren;
     private javax.swing.JCheckBox checkresize;
+    private static javax.swing.JTextArea cokie;
     private javax.swing.JTextField hight;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -1914,9 +1820,11 @@ public class zazzle extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;

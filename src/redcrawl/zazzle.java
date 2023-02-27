@@ -91,10 +91,10 @@ import static redcrawl.ebay.status;
  *
  * @author me
  */
-public class c extends javax.swing.JFrame {
+public class zazzle extends javax.swing.JFrame {
 
     public static String status = "";
-    private final String USER_AGENT = "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Chrome/W.X.Y.Z Safari/537.36";
+    private final String USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36";
     /**
      *
      * Creates new form downloadanh
@@ -105,7 +105,7 @@ public class c extends javax.swing.JFrame {
     static String Key;
     private Document page;
 
-    public c() {
+    public zazzle() {
 
         initComponents();
     }
@@ -582,7 +582,7 @@ public class c extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Nhập key");
                 return;
             }
-            ProtectionDomain pd = c.class.getProtectionDomain();
+            ProtectionDomain pd = zazzle.class.getProtectionDomain();
             CodeSource cs = pd.getCodeSource();
             URL location = cs.getLocation();
 
@@ -642,7 +642,7 @@ public class c extends javax.swing.JFrame {
             submitKey.setKey(Key);
             submitKey.setAddress(adip);
 
-            String checkKeyUrl = "http://45.32.101.196:8080/restApiNew/checkkey";
+            String checkKeyUrl = "http://45.32.101.196:8080/restApi/checkkey";
 
             String bodyKey = gson.toJson(submitKey);
 
@@ -720,7 +720,7 @@ public class c extends javax.swing.JFrame {
                     submit.setKey(Key);
                     submit.setAddress(adip);
 
-                    String completeUrl = "http://45.32.101.196:8080/restApiNew/upload";
+                    String completeUrl = "http://45.32.101.196:8080/restApi/upload";
 
                     String body = gson.toJson(submit);
 
@@ -940,7 +940,7 @@ public class c extends javax.swing.JFrame {
                         submit.setKey(Key);
                         submit.setAddress(adip);
 
-                        String completeUrl = "http://45.32.101.196:8080/restApiNew/upload";
+                        String completeUrl = "http://45.32.101.196:8080/restApi/upload";
 
                         String body = gson.toJson(submit);
 
@@ -1225,7 +1225,7 @@ public class c extends javax.swing.JFrame {
                         submit.setKey(Key);
                         submit.setAddress(adip);
 
-                        String completeUrl = "http://45.32.101.196:8080/restApiNew/upload";
+                        String completeUrl = "http://45.32.101.196:8080/restApi/upload";
 
                         String body = gson.toJson(submit);
 
@@ -1719,7 +1719,7 @@ public class c extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
-            ProtectionDomain pd = c.class.getProtectionDomain();
+            ProtectionDomain pd = zazzle.class.getProtectionDomain();
             CodeSource cs = pd.getCodeSource();
             URL location = cs.getLocation();
 
@@ -1748,7 +1748,7 @@ public class c extends javax.swing.JFrame {
 
             adip = String.join(",", adress);
             //System.out.println("http://donthan.info/APIRED/index.php?key=" + rand + "&adress=" + adip + "&method=create");
-            String checkKeyUrl = "http://45.32.101.196:8080/restApiNew/insert";
+            String checkKeyUrl = "http://45.32.101.196:8080/restApi/insert";
             subMitClass submitKey = new subMitClass();
             submitKey.setKey(String.valueOf(rand));
             submitKey.setAddress(adip);
@@ -1806,7 +1806,7 @@ public class c extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
 
-                c abc = new c();
+                zazzle abc = new zazzle();
                 abc.addWindowListener(new WindowAdapter() {
                     @Override
                     public void windowClosing(WindowEvent e) {
@@ -1818,7 +1818,7 @@ public class c extends javax.swing.JFrame {
                     public void windowOpened(WindowEvent e) {
 
                         try {
-                            ProtectionDomain pd = c.class.getProtectionDomain();
+                            ProtectionDomain pd = zazzle.class.getProtectionDomain();
                             CodeSource cs = pd.getCodeSource();
                             URL location = cs.getLocation();
                             File directory4 = new File(location.getPath());
@@ -1858,7 +1858,7 @@ public class c extends javax.swing.JFrame {
                             }
 
                         } catch (FileNotFoundException ex) {
-                            Logger.getLogger(c.class.getName()).log(Level.SEVERE, null, ex);
+                            Logger.getLogger(zazzle.class.getName()).log(Level.SEVERE, null, ex);
                         }
 
                     }
@@ -1889,7 +1889,7 @@ public class c extends javax.swing.JFrame {
             }
 
         } catch (Exception ex) {
-            Logger.getLogger(c.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(zazzle.class.getName()).log(Level.SEVERE, null, ex);
         }
         return urlresturn;
     }
